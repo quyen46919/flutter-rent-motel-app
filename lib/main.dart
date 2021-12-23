@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_hotel_app/screens/home_screen.dart';
+import 'package:travel_hotel_app/screens/profile_page.dart';
+import 'package:travel_hotel_app/screens/support_center_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
           ),
         scaffoldBackgroundColor: const Color(0xFFF3F5F7),
       ),
-      home: const HomeScreen(),
+      home: SupportCenterPage(),
     );
   }
 }
