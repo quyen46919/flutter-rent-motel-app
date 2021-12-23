@@ -38,13 +38,21 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
       Center(
         child: Container(
           color: myColors[BACKGROUND],
+          // color: Colors.white,
           width: 430,
-          child: Column(
-            children: [
+          height: double.infinity,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: <Widget>[
               buildTop(),
-              buildContent(),
-
-              // buildContent(),
+              // Positioned(
+              //   top: 50,
+              //   child: buildTextField(),
+              // ),
+              Positioned(
+                top: 150,
+                child: buildContent(),
+              ),
             ],
           ),
         ),
@@ -61,7 +69,7 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
             child: Container(
               color: myColors[COLOR_IMAGE],
               width: double.infinity,
-              height: 140,
+              height: 170,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20.0),
 
@@ -116,6 +124,14 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
         ),
       ]
   );
+
+  Widget buildTextField() => const TextField(
+    decoration: InputDecoration(
+      border: OutlineInputBorder(),
+    ),
+
+  );
+
   Widget BuildUserSupport() => Row(
 
     children: [
@@ -189,15 +205,15 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
 
     children: [
       Padding(
-        padding: const EdgeInsets.only(top:30.0, left: 20, right: 20),
+        padding: const EdgeInsets.only(top:60.0, left: 40, right: 40),
         child: Container(
 
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(13.0),
             color: myColors[COLOR_SUPPORT],
           ),
-          height: 500,
-          width: 430,
+          height: 450,
+          width: 380,
           child: Column(
             children: [
               Padding(
@@ -218,13 +234,6 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
                           topLeft: Radius.circular(13),
                         ),
                         color: Colors.white,
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //   color: Colors.purple.withOpacity(0.2),
-                        //   spreadRadius: 5,
-                        //   blurRadius: 7,
-                        //   offset: Offset(0, 3), // changes position of shadow
-                        // ),],
                       ),
                     ),
                   ),
@@ -239,18 +248,17 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
                     child: Column(
                       children: [
                         Container(
-                          height: 275,
+                          height: 250,
                           width: double.infinity,
                           child: const Padding(
                             padding:  EdgeInsets.only(top: 16.0,left: 30.0, right: 30.0),
                             child: Text('You can build apps with Flutter using any text editor combined with our command-line tools. However, we recommend using one of our editor plugins for an even better experience. These plugins provide you with code completion, syntax highlighting, widget editing assists, run & debug support, and more.',
 
                               textAlign: TextAlign.justify,
-                              style: TextStyle( fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey),
+                              style: TextStyle( fontSize: 19, fontWeight: FontWeight.w500, color: Colors.grey),
                                 ),
                           )
                           ,
-
                         ),
                         Container(
                           color: Colors.transparent,
@@ -261,7 +269,7 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
                             child: Text('These plugins provide you with code completion, syntax highlighting, widget editing assists, run & debug support, and more.',
 
                               textAlign: TextAlign.justify,
-                              style: TextStyle( fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey),
+                              style: TextStyle( fontSize: 19, fontWeight: FontWeight.w500, color: Colors.grey),
                             ),
                           )
                           ,
