@@ -45,10 +45,34 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
             alignment: Alignment.topCenter,
             children: <Widget>[
               buildTop(),
-              // Positioned(
-              //   top: 50,
-              //   child: buildTextField(),
-              // ),
+              Positioned(
+                top: 130,
+                child: Container(
+                  child: const Material(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        prefixIcon: Icon(Icons.search),
+                        hintText: 'Search for Help...',
+                        hintStyle: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w500, color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderSide: BorderSide(color: Colors.white),
+                          ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                    height: 60,
+                    width: 300,
+                    // color: Colors.red,
+                ),
+
+              ),
               Positioned(
                 top: 150,
                 child: buildContent(),

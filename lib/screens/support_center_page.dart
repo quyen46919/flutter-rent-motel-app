@@ -33,18 +33,59 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
     return Scaffold(
       backgroundColor: myColors[BACKGROUND],
       body:
-      Center(
-        child: Container(
-          color: myColors[BACKGROUND],
-          width: 430,
-          child: Column(
-            children: <Widget>[
-              buildTop(),
-              BuildUserSupport(),
-              buildContent(),
+      SingleChildScrollView(
+        child: Center(
+          child: Container(
+            color: myColors[BACKGROUND],
+            width: 430,
+            height: 900,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: <Widget>[
 
-              // buildContent(),
-            ],
+                buildTop(),
+
+                Positioned(
+                  top: 300,
+                    child: buildContent()
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 140.0),
+                  child: Positioned(
+                    // top: 0,
+                      child: BuildUserSupport()),
+                ),
+                Positioned(
+                  top: 110,
+                  child: Container(
+                    child: const Material(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          prefixIcon: Icon(Icons.search),
+                          hintText: 'Search for Help...',
+                          hintStyle: TextStyle(fontSize: 18.0,fontWeight: FontWeight.w500, color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                    height: 60,
+                    width: 300,
+                    // color: Colors.red,
+                  ),
+
+                ),
+                // buildContent(),
+              ],
+            ),
           ),
         ),
       ),
@@ -125,6 +166,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
               color: myColors[COLOR_USER]
           ),
           height: 150,
+          width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -211,8 +253,8 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
               borderRadius: BorderRadius.circular(13.0),
               color: Colors.white,
           ),
-          height: 360,
-          width: 430,
+          height: 500,
+          width: 380,
           child: Column(
             children: [
               Padding(
@@ -247,7 +289,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Center(
@@ -312,7 +354,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Center(
@@ -377,7 +419,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Center(
@@ -442,7 +484,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Center(
@@ -507,7 +549,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Center(
@@ -525,6 +567,70 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 60.0),
+                              child: SizedBox(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 0),
+                                  child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    // color: Colors.red,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.purple.withOpacity(0.1),
+                                          spreadRadius: 5,
+                                          blurRadius: 7,
+                                          offset: Offset(0, 3), // changes position of shadow
+                                        ),],
+                                    ),
+                                    child: const Icon(
+                                      Icons.arrow_right,
+                                      color: Colors.grey,
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ]
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13.0),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.purple.withOpacity(0.1),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),],
+                      ),
+                    ),
+                  ),
+
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Center(
+                    child: Container(
+                      height: 50,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 16.0),
+                              child: Text(
+                                  'Where can i pay??', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 132.0),
                               child: SizedBox(
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 0),
