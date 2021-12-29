@@ -12,14 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Travel App',
+      title: 'Flutter Rent Motel App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF3EBACE),
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-              secondary: const Color(0xFFD8ECF1),
-          ),
-        scaffoldBackgroundColor: const Color(0xFFF3F5F7),
+        primaryColor: const Color(0xff8168dd),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+            secondary: const Color(0xffD774E8),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
       home: const HomeScreen(),
     );
