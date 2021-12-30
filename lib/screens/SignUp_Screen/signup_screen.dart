@@ -296,24 +296,37 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: size.height * 0.05),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child:  Container(
+                    child: Container(
                       height: 50,
                       width: 10000,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:  <Widget>[
-                           Text("Already Have Acount?",
-                            style: TextStyle(color: _textcolor,
-                                fontWeight: FontWeight.w600, fontSize: 17),),
+                           Text(
+                             "Already Have Acount?",
+                            style: TextStyle(
+                                color: _textcolor,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17),
+                           ),
                           TextButton(
                               onPressed: (){
-                                Navigator.pushNamed(context, '/LoginScreen');
+                                Navigator.pop(context);
                               },
                               child: Row(
                                 children:  <Widget>[
-                                  Text("Sign In",
-                                      style: TextStyle(color: _textcolor,fontWeight: FontWeight.w600, fontSize: 17)),
-                                  const Icon(FontAwesomeIcons.caretRight, color:Colors.deepPurple),
+                                  Text(
+                                      "Login",
+                                      style: TextStyle(
+                                          color: _textcolor,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 17
+                                      )
+                                  ),
+                                  const Icon(
+                                      FontAwesomeIcons.caretRight,
+                                      color:Colors.deepPurple
+                                  ),
                                 ],
                               )
                           ),

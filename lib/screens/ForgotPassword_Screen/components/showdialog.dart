@@ -23,7 +23,7 @@ class ShowDiaLog extends StatelessWidget {
 
     height: 450,
     decoration: const BoxDecoration(
-        color:  Color(0xffdd774e8),
+        color: Color(0xffdd74e8),
         shape: BoxShape.rectangle,
         borderRadius: BorderRadius.all(Radius.circular(12))
     ),
@@ -40,7 +40,7 @@ class ShowDiaLog extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Text(
-            'Your password has been reset',
+            'Reset password link has been send to entered email',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25,
@@ -55,10 +55,10 @@ class ShowDiaLog extends StatelessWidget {
           child: ElevatedButton(
               child: const Text(
                 "Done",
-                style: TextStyle(color: Color(0xffdd774e8), fontSize: 25,),
+                style: TextStyle(color: Color(0xffdd74e8), fontSize: 25,),
               ),
               onPressed:() {
-                Navigator.pushNamed(context, '/LoginScreen');
+                Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'));
               },
               style:
               ButtonStyle(

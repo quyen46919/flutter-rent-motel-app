@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_hotel_app/screens/Login_Screen/components/background.dart';
 import 'package:travel_hotel_app/screens/Login_Screen/components/btnforgotpassword.dart';
 import 'package:travel_hotel_app/screens/Login_Screen/components/social_icon.dart';
+import 'package:travel_hotel_app/screens/SignUp_Screen/signup_screen.dart';
+import 'package:travel_hotel_app/screens/home_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -14,8 +16,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final Color _trueinputvalidcolor =   const Color.fromRGBO(236, 215, 250, 1);
-  final Color _falseinputvalidcolor =   Colors.red.withOpacity(0.8);
+  final Color _trueinputvalidcolor = const Color.fromRGBO(236, 215, 250, 1);
+  final Color _falseinputvalidcolor = Colors.red.withOpacity(0.8);
   final Color _textcolor =  const Color.fromRGBO(68, 58, 79, 1);
   bool _showPass = true;
   Color _color =  const Color.fromRGBO(255, 0, 0, 0);
@@ -127,7 +129,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: _passwordControl,
                                 obscureText: _showPass,
                                 cursorColor: Colors.grey,
-                                style: const TextStyle(fontSize: 17, color: Colors.black, height: 1.5, fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.black,
+                                    height: 1.5,
+                                    fontWeight: FontWeight.bold
+                                ),
                                 decoration: const InputDecoration(
                                   // hintText: "PassWord",
                                   isCollapsed: false,
@@ -243,19 +250,35 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children:  <Widget>[
-                               Text("Already Haven't Acount?",
-                                style: TextStyle(color: _textcolor,
-                                fontWeight: FontWeight.w600, fontSize: 17),),
+                               Text(
+                                 "Already Haven't Acount?",
+                                style: TextStyle(
+                                    color: _textcolor,
+                                fontWeight: FontWeight.w600,
+                                    fontSize: 17),
+                               ),
                               TextButton(
                                   onPressed: (){
-                                    Navigator.pushNamed(context, '/SignupScreen');
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          settings: const RouteSettings(name: '/login'),
+                                          builder: (context) => const SignUpScreen()
+                                      ),
+                                    );
                                   },
                                   child: Row(
                                     children:  <Widget>[
                                       Text(
-                                        "Sign Up",
-                                        style: TextStyle(color: _textcolor,fontWeight: FontWeight.w600, fontSize: 17)),
-                                        const Icon(FontAwesomeIcons.caretRight, color:Colors.deepPurple),
+                                        "Register",
+                                        style: TextStyle(
+                                            color: _textcolor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 17)
+                                      ),
+                                        const Icon(
+                                            FontAwesomeIcons.caretRight,
+                                            color:Colors.deepPurple
+                                        ),
                                     ],
                                   )
                               ),
@@ -300,17 +323,22 @@ class _LoginScreenState extends State<LoginScreen> {
   }
   void btnClick(){
     setState(() {
-      if(_emailControl.text.length <8 ){
+      if(_emailControl.text.length < 8 ){
         _emailInvalid = false;
       }
       else if (!_emailcheckcolor){
         _emailInvalid = false;
       }
-      if(_passwordControl.text.length <6){
-      _passwordInvalid = false;
+      if(_passwordControl.text.length < 6){
+        _passwordInvalid = false;
       }
       else{
         _passwordInvalid = true;
+        Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (context) => const HomeScreen()
+          ),
+        );
       }
     });
   }

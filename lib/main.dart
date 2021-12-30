@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_hotel_app/screens/Login_Screen/login_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen.dart';
 import 'package:travel_hotel_app/screens/profile_page.dart';
 import 'package:travel_hotel_app/screens/suport_center_extend_page.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
-      home: SupportCenterExtendPage(),
+      home: const LoginScreen(),
     );
   }
 }

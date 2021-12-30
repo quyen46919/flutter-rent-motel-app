@@ -179,8 +179,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: btnClick,
-                          style:
-                          ButtonStyle(
+                          style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.white),
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -189,7 +188,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(17),
-
                                 )),
                           )
                       ),

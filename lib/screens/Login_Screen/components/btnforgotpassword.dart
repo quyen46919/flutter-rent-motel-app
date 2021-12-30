@@ -22,7 +22,9 @@ class Btnforgotpassword extends StatelessWidget {
           ),
         ),
         onPressed:() {
-          Navigator.pushNamed(context, '/ForgotPassword');
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ForgotPassword()),
+          );
         },
       ),
     );
