@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_hotel_app/screens/ForgotPassword_Screen/forgotpassword_screen.dart';
+import 'package:travel_hotel_app/screens/forgot_password_screen.dart';
 
 class Btnforgotpassword extends StatelessWidget {
   final Color _textcolor =  const Color.fromRGBO(68, 58, 79, 1);

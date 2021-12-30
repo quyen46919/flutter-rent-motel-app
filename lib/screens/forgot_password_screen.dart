@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_hotel_app/screens/ForgotPassword_Screen/components/showdialog.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/components/background.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/login_screen.dart';
-import 'package:travel_hotel_app/screens/ForgotPassword_Screen/components/showdialog.dart';
+import 'package:travel_hotel_app/widgets/show_dialog.dart';
+import 'package:travel_hotel_app/widgets/background.dart';
+import 'package:travel_hotel_app/screens/login_screen.dart';
+import 'package:travel_hotel_app/widgets/show_dialog.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);

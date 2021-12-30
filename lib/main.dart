@@ -3,6 +3,9 @@ import 'package:travel_hotel_app/screens/home_screen.dart';
 import 'package:travel_hotel_app/screens/profile_page.dart';
 import 'package:travel_hotel_app/screens/suport_center_extend_page.dart';
 import 'package:travel_hotel_app/screens/support_center_page.dart';
+import 'package:travel_hotel_app/screens/forgot_password_screen.dart';
+import 'package:travel_hotel_app/screens/signup_screen.dart';
+import 'package:travel_hotel_app/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       ),
-      home: SupportCenterExtendPage(),
+      home: const SignUpScreen(),
     );
   }
 }

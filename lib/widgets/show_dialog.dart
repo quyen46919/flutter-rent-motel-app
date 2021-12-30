@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/login_screen.dart';
+import 'package:travel_hotel_app/screens/login_screen.dart';
 
 
 class ShowDiaLog extends StatelessWidget {
