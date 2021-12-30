@@ -28,6 +28,14 @@ class SupportCenterPage extends StatefulWidget {
 }
 
 class _SupportCenterPageState extends State<SupportCenterPage> {
+  final List<String> _questions = [
+    'Làm sao tôi tìm được nhà trọ? ',
+    'Làm sao để đăng thông tin trọ?',
+    'Tính xác thực của thông tin?',
+    'Phương thức thanh toán là gì?',
+    'Tôi cần hỗ trợ phải làm sao?',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +50,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
             child: Stack(
               alignment: Alignment.topCenter,
               children: <Widget>[
-
                 buildTop(),
-
                 Positioned(
                   top: 300,
                     child: buildContent()
@@ -123,7 +129,13 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                     const Padding(
                       padding: EdgeInsets.only(left: 70.0, top: 10),
                       child: Center(
-                        child: Text('Support Center',style: TextStyle(fontSize: 28,fontWeight: FontWeight.w600, color: Colors.white),
+                        child: Text(
+                          'Support Center',
+                          style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white
+                          ),
                         ),
                       ),
                     ),
@@ -154,9 +166,7 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
       ]
   );
   Widget BuildUserSupport() => Row(
-
     children: [
-
       Expanded(
         child: Container(
           decoration: BoxDecoration(
@@ -190,8 +200,22 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Live Chat', style:TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.w600)),
-                      const Text('with our Support',style:TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w300)),
+                      const Text(
+                          'Live Chat',
+                          style:TextStyle(
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600
+                          )
+                      ),
+                      const Text(
+                          'with our Support',
+                          style:TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300
+                          )
+                      ),
                       SizedBox(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20),
@@ -204,7 +228,15 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
                                 color: Colors.white
                             ),
                             child:
-                            const Center(child: Text('Start', style:TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w600))),
+                            const Center(child: Text(
+                                'Start',
+                                style:TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w600
+                                )
+                              )
+                            ),
                           ),
                         ),
                       ),
@@ -243,7 +275,6 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
       // )
     ],
   );
-
   Widget buildContent() => Column(
     children: [
       Padding(
@@ -256,432 +287,83 @@ class _SupportCenterPageState extends State<SupportCenterPage> {
           height: 500,
           width: 380,
           child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
+            children:
+              _questions.map((question) =>
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+                    child: SizedBox(
+                      width: double.infinity,
                       child: Center(
-                        child: Text(
-                          'Frequently asked Questions', style:TextStyle(fontSize: 25, color: myColors[COLOR_TEXT], fontWeight: FontWeight.w800 ,)
+                        child: Container(
+                          height: 50,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding:  const EdgeInsets.only(left: 16.0),
+                                  child: Text(
+                                      question,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w800
+                                        ,
+                                      )
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 40.0),
+                                  child: SizedBox(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 0),
+                                      child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        // color: Colors.red,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(18.0),
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.purple.withOpacity(0.1),
+                                              spreadRadius: 5,
+                                              blurRadius: 7,
+                                              offset: Offset(0, 3), // changes position of shadow
+                                            ),],
+                                        ),
+                                        child: const Icon(
+                                          Icons.arrow_right,
+                                          color: Colors.grey,
+
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ]
+
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(13.0),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.purple.withOpacity(0.1),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3), // changes position of shadow
+                              ),],
+                          ),
                         ),
                       ),
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(13),
-                            topLeft: Radius.circular(13),
-                          ),
-                          color: Colors.white,
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //   color: Colors.purple.withOpacity(0.2),
-                          //   spreadRadius: 5,
-                          //   blurRadius: 7,
-                          //   offset: Offset(0, 3), // changes position of shadow
-                          // ),],
-                      ),
+
                     ),
                   ),
-
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Padding(
-                            padding:  EdgeInsets.only(left: 15.0),
-                            child: Text(
-                                'Who are Intrepid tralvellers?', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 50.0),
-                            child: SizedBox(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 0),
-                                child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  // color: Colors.red,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.purple.withOpacity(0.1),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: Offset(0, 3), // changes position of shadow
-                                      ),],
-                                  ),
-                                  child: const Icon(
-                                    Icons.arrow_right,
-                                    color: Colors.grey,
-
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ]
-
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.0),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                          color: Colors.purple.withOpacity(0.1),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),],
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 16.0),
-                              child:  Text(
-                                  'How will be on my trip?', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 90.0),
-                              child: SizedBox(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 0),
-                                  child: Container(
-                                    height: 30,
-                                    width: 30,
-                                    // color: Colors.red,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
-                                        ),],
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_right,
-                                      color: Colors.grey,
-
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]
-
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.0),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.1),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),],
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding:  EdgeInsets.only(left: 16.0),
-                              child: Text(
-                                  'Any age restrictions on trips?', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 40.0),
-                              child: SizedBox(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 0),
-                                  child: Container(
-                                    height: 30,
-                                    width: 30,
-                                    // color: Colors.red,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
-                                        ),],
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_right,
-                                      color: Colors.grey,
-
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]
-
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.0),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.1),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),],
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 16.0),
-                              child: Text(
-                                  'How do I organise my Visa?', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 55.0),
-                              child: SizedBox(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 0),
-                                  child: Container(
-                                    height: 30,
-                                    width: 30,
-                                    // color: Colors.red,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
-                                        ),],
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_right,
-                                      color: Colors.grey,
-
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]
-
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.0),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.1),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),],
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 16.0),
-                              child: Text(
-                                  'Will I need a bag/mat/tent?', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 60.0),
-                              child: SizedBox(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 0),
-                                  child: Container(
-                                    height: 30,
-                                    width: 30,
-                                    // color: Colors.red,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
-                                        ),],
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_right,
-                                      color: Colors.grey,
-
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.0),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.1),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),],
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Center(
-                    child: Container(
-                      height: 50,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 16.0),
-                              child: Text(
-                                  'Where can i pay??', style:TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800 ,)
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 132.0),
-                              child: SizedBox(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 0),
-                                  child: Container(
-                                    height: 30,
-                                    width: 30,
-                                    // color: Colors.red,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
-                                        ),],
-                                    ),
-                                    child: const Icon(
-                                      Icons.arrow_right,
-                                      color: Colors.grey,
-
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ]
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13.0),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.purple.withOpacity(0.1),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),],
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-
-            ],
-          ),
+              ).toList(),
         ),
       )
-    ],
+    )],
   );
 }
 
