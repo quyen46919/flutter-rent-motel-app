@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/components/background.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/components/btnforgotpassword.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/components/social_icon.dart';
-import 'package:travel_hotel_app/screens/SignUp_Screen/signup_screen.dart';
+import 'package:travel_hotel_app/widgets/background.dart';
+import 'package:travel_hotel_app/widgets/btn_forgot_password.dart';
+import 'package:travel_hotel_app/widgets/social_icon.dart';
+import 'package:travel_hotel_app/screens/signup_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen.dart';
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_hotel_app/screens/Login_Screen/login_screen.dart';
+import 'package:travel_hotel_app/screens/login_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen.dart';
 import 'package:travel_hotel_app/screens/profile_page.dart';
 import 'package:travel_hotel_app/screens/suport_center_extend_page.dart';
