@@ -24,8 +24,8 @@ class _FavoritePageState extends State<FavoritePage> {
                 )
               ]
             : listMotels.map((value) =>
-            // sửa style tại đây
-            Text(value.imageUrl)
+              // sửa style tại đây
+              Text(value.imageUrl)
             ).toList(),
       ),
     );
