@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_hotel_app/screens/login_screen.dart';
-
 
 class ShowDiaLog extends StatelessWidget {
-  const ShowDiaLog({Key? key}) : super(key: key);
+  final String message;
+  final IconData icon;
+  final String navigateType;
+  const ShowDiaLog({
+    required this.message,
+    this.icon = FontAwesomeIcons.key,
+    this.navigateType = "pushNamedAndRemoveUntil"
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,6 @@ class ShowDiaLog extends StatelessWidget {
   }
 
   _buildChild(BuildContext context) => Container(
-
     height: 450,
     decoration: const BoxDecoration(
         color: Color(0xffdd74e8),
@@ -31,18 +35,17 @@ class ShowDiaLog extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
       children:  <Widget>[
-
-        const Icon(
-          FontAwesomeIcons.key,
+        Icon(
+          icon,
           color: Colors.white,
           size: 100,
         ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Text(
-            'Reset password link has been send to entered email',
+            message,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
               color: Colors.white
@@ -54,11 +57,13 @@ class ShowDiaLog extends StatelessWidget {
           height: 70,
           child: ElevatedButton(
               child: const Text(
-                "Done",
+                "Tôi đã hiểu",
                 style: TextStyle(color: Color(0xffdd74e8), fontSize: 25,),
               ),
               onPressed:() {
-                Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'));
+                navigateType == 'pushNamedAndRemoveUntil'
+                    ? Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'))
+                    : Navigator.pop(context);
               },
               style:
               ButtonStyle(
@@ -70,7 +75,6 @@ class ShowDiaLog extends StatelessWidget {
                     RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(23),
-
                     )),
               )
           ),

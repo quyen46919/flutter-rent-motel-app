@@ -45,7 +45,7 @@ class HotelCarousel extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: hotels.length,
               itemBuilder: (BuildContext context, int index) {
-                Hotel hotel = hotels[index];
+                Motel motels = hotels[index];
                 return const Text("sadkasl;dlsa");
               }
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_hotel_app/widgets/background.dart';
 import 'package:travel_hotel_app/screens/login_screen.dart';
+import 'package:travel_hotel_app/widgets/show_dialog.dart';
 import 'package:travel_hotel_app/widgets/social_icon.dart';
 
 
@@ -28,6 +29,64 @@ class  _SignUpScreenState extends State<SignUpScreen> {
   var _passwordInvalid = true;
   final Color _trueinputvalidcolor =   const Color.fromRGBO(236, 215, 250, 1);
   final Color _falseinputvalidcolor =   Colors.red.withOpacity(0.8);
+  IconData _icon = FontAwesomeIcons.checkCircle;
+
+  void onToggleShowPass(){
+    setState(() {
+      _showPass = !_showPass;
+      if(!_showPass){
+        _iconshowpass = FontAwesomeIcons.eye;
+      }else{
+        _iconshowpass = FontAwesomeIcons.eyeSlash;
+      }
+    });
+  }
+  void checkEmail(value){
+    setState(() {
+      if(value==null) {
+        _color = Colors.red;
+      }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+        _color = Colors.red;
+        _icon = FontAwesomeIcons.timesCircle;
+        _emailcheckcolor = false;
+      }
+      else{
+        _icon = FontAwesomeIcons.checkCircle;
+        _color = Colors.green;
+        _emailcheckcolor = true;
+        _emailInvalid = true;
+      }
+    });
+  }
+  void btnClick(){
+    setState(() {
+      if(_nameControl.text.length <6){
+        _nameInvalid = false;
+      }else{
+        _nameInvalid = true;
+      }
+
+      if(_emailControl.text.length <8){
+        _emailInvalid = false;
+      }
+      else if (!_emailcheckcolor){
+        _emailInvalid = false;
+      }
+
+      if(_passwordControl.text.length <6){
+        _passwordInvalid = false;
+      }
+      else{
+        _passwordInvalid = true;
+      }
+
+      if (_emailInvalid == true && _passwordInvalid == true && _nameInvalid == true) {
+        showDialog(context: context, builder: (context) =>
+        const ShowDiaLog(message: "Đăng ký thành công", icon: FontAwesomeIcons.check,)
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +111,21 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children:   <Widget>[
                           const Text(
-                            "Create New Account",
+                            "Tạo tài khoản mới",
                             style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(128, 103, 221, 1)
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(128, 103, 221, 1)
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                             child: Text(
-                              "Enter Your details to create account",
+                              "Nhập email của bạn để nhận mã xác thực và tạo mới tài khoản",
                               style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w400,
-                                  color: _textcolor,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                                color: _textcolor,
                               ),
                             ),
                           )
@@ -81,15 +140,15 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                       width:10000,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: _nameInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
-                            spreadRadius: 1,
-                            blurRadius: 15,
-                            offset: const Offset(0, 2),)
-                        ]
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: _nameInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
+                              spreadRadius: 1,
+                              blurRadius: 15,
+                              offset: const Offset(0, 2),)
+                          ]
                       ),
                       child: TextFormField(
                         controller: _nameControl,
@@ -100,7 +159,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                           isCollapsed: false,
                           filled: true,
                           // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                          labelText: "Name",
+                          labelText: "Tên của bạn",
                           labelStyle: TextStyle(
                             color: Colors.grey,
                           ),
@@ -122,8 +181,8 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                             width:10000,
                             height: 60,
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
                                 boxShadow: [
                                   BoxShadow(
                                     color: _emailInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
@@ -142,7 +201,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                                 isCollapsed: false,
                                 filled: true,
                                 // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                labelText: "Your Email",
+                                labelText: "Địa chỉ mail",
                                 labelStyle: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -158,7 +217,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                           padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
                           child: GestureDetector(
                             child:  Icon(
-                              FontAwesomeIcons.checkCircle,
+                              _icon,
                               color: _color,
                               size: 20,
                             ),
@@ -176,15 +235,15 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                           width:10000,
                           height: 60,
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                color: _passwordInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
-                                spreadRadius: 1,
-                                blurRadius: 15,
-                                offset: const Offset(0, 2),)
-                            ]
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: _passwordInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
+                                  spreadRadius: 1,
+                                  blurRadius: 15,
+                                  offset: const Offset(0, 2),)
+                              ]
                           ),
                           child: TextFormField(
                             controller: _passwordControl,
@@ -196,7 +255,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                               isCollapsed: false,
                               filled: true,
                               // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                              labelText: "Password",
+                              labelText: "Mật khẩu",
                               labelStyle: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -238,7 +297,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       child: ElevatedButton(
                           child: const Text(
-                            "Sign Up",
+                            "Đăng ký",
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: btnClick,
@@ -254,8 +313,8 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   SizedBox(height: size.height * 0.05),
-                   Text(
-                    "Or Sign Up With",
+                  Text(
+                    "Hoặc đăng ký với",
                     style: TextStyle(
                       color: _textcolor,
                       fontWeight: FontWeight.w800 ,
@@ -293,22 +352,22 @@ class  _SignUpScreenState extends State<SignUpScreen> {
 
                     ],
                   ),
-                  SizedBox(height: size.height * 0.05),
+                  const SizedBox(height: 20.0),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Container(
+                    padding: const EdgeInsets.fromLTRB(20, 0.0, 0.0, 0.0),
+                    child: SizedBox(
                       height: 50,
                       width: 10000,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:  <Widget>[
-                           Text(
-                             "Already Have Acount?",
+                          Text(
+                            "Bạn đã có tài khoản?",
                             style: TextStyle(
                                 color: _textcolor,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 17),
-                           ),
+                          ),
                           TextButton(
                               onPressed: (){
                                 Navigator.pop(context);
@@ -316,7 +375,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
                               child: Row(
                                 children:  <Widget>[
                                   Text(
-                                      "Login",
+                                      "Đăng nhập ngay",
                                       style: TextStyle(
                                           color: _textcolor,
                                           fontWeight: FontWeight.w600,
@@ -343,52 +402,6 @@ class  _SignUpScreenState extends State<SignUpScreen> {
       ),
       backgroundColor:  const Color(0xffFDF8FE),
     );
-  }
-  void onToggleShowPass(){
-    setState(() {
-      _showPass = !_showPass;
-      if(!_showPass){
-        _iconshowpass = FontAwesomeIcons.eye;
-      }else{
-        _iconshowpass = FontAwesomeIcons.eyeSlash;
-      }
-    });
-  }
-  void checkEmail(value){
-    setState(() {
-      if(value==null) {
-        _color = Colors.red;
-      }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-        _color = Colors.red;
-        _emailcheckcolor = false;
-      }
-      else{
-        _color = Colors.green;
-        _emailcheckcolor = true;
-        _emailInvalid = true;
-      }
-    });
-  }
-  void btnClick(){
-    setState(() {
-      if(_nameControl.text.length <6){
-        _nameInvalid = false;
-      }else{
-        _nameInvalid = true;
-      }
-      if(_emailControl.text.length <8 ){
-        _emailInvalid = false;
-      }
-      else if (!_emailcheckcolor){
-        _emailInvalid = false;
-      }
-      if(_passwordControl.text.length <6){
-        _passwordInvalid = false;
-      }
-      else{
-        _passwordInvalid = true;
-      }
-    });
   }
 }
 

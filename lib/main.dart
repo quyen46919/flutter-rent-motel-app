@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_hotel_app/provider/motels.dart';
+import 'package:travel_hotel_app/provider/user.dart';
+import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
 import 'package:travel_hotel_app/screens/login_screen.dart';
-import 'package:travel_hotel_app/screens/home_screen.dart';
-import 'package:travel_hotel_app/screens/profile_page.dart';
-import 'package:travel_hotel_app/screens/suport_center_extend_page.dart';
-import 'package:travel_hotel_app/screens/support_center_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,21 +12,27 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Rent Motel App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: const Color(0xff8168dd),
-        colorScheme: ColorScheme.fromSwatch().copyWith(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MotelProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Rent Motel App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: const Color(0xff8168dd),
+          colorScheme: ColorScheme.fromSwatch().copyWith(
             secondary: const Color(0xffD774E8),
+          ),
+          scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         ),
-        scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+        home: const LoginScreen(),
       ),
-      home: const LoginScreen(),
     );
+
   }
 }
 
