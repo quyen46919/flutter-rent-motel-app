@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_hotel_app/provider/motels.dart';
 
 class CategoryList extends StatefulWidget {
   const CategoryList({Key? key}) : super(key: key);
@@ -9,7 +11,7 @@ class CategoryList extends StatefulWidget {
 
 class _CategoryListState extends State<CategoryList> {
   final categoryList = [
-    'Trend', 'Recommend', 'Top search', 'Featured', 'New'
+    'Tất cả', 'Đề cử cho bạn', 'Tìm kiếm nhiều nhất', 'Chất lượng cao'
   ];
   int currentSelect = 0;
 
@@ -25,11 +27,12 @@ class _CategoryListState extends State<CategoryList> {
               setState(() {
                 currentSelect = index;
               });
+              Provider.of<MotelProvider>(context, listen: false).setTargetCategory(categoryList[index]);
             },
             child: Text(
                 categoryList[index],
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 24.0,
                   fontWeight: currentSelect == index ? FontWeight.bold : FontWeight.normal,
                   color: currentSelect == index ? Theme.of(context).colorScheme.secondary : Colors.grey,
                 )

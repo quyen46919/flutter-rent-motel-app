@@ -4,7 +4,7 @@ import 'package:travel_hotel_app/widgets/background.dart';
 import 'package:travel_hotel_app/widgets/btn_forgot_password.dart';
 import 'package:travel_hotel_app/widgets/social_icon.dart';
 import 'package:travel_hotel_app/screens/signup_screen.dart';
-import 'package:travel_hotel_app/screens/home_screen.dart';
+import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -336,7 +336,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _passwordInvalid = true;
         Navigator.of(context).push(
           MaterialPageRoute(
-              builder: (context) => const HomeScreen()
+              builder: (context) => const HomeScreenTabs()
           ),
         );
       }
