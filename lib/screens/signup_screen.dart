@@ -45,7 +45,7 @@ class  _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       if(value==null) {
         _color = Colors.red;
-      }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+      }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.com+").hasMatch(value)){
         _color = Colors.red;
         _icon = FontAwesomeIcons.timesCircle;
         _emailcheckcolor = false;
