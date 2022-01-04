@@ -44,7 +44,69 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
           child: Stack(
             alignment: Alignment.topCenter,
             children: <Widget>[
-              buildTop(),
+              Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 0.0),
+                        child: Container(
+                          color: myColors[COLOR_IMAGE],
+                          width: double.infinity,
+                          height: 170,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 8.0, left: 8),
+                                    child: Container(
+                                      height: 40,
+                                      width: 40,
+                                      // color: Colors.red,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(13.0),
+                                          color: Colors.white
+                                      ),
+                                      child:
+                                      BackButton(color: Colors.grey,),
+                                    ),
+                                  ),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 70.0, top: 10),
+                                  child: Center(
+                                    child: Text('Support Center',style: TextStyle(fontSize: 28,fontWeight: FontWeight.w600, color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 8.0, left: 55),
+                                    child: Container(
+                                      height: 40,
+                                      width: 40,
+                                      // color: Colors.red,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(13.0),
+                                          color: Colors.white
+                                      ),
+                                      child: const Icon(
+                                        Icons.notifications,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
               Positioned(
                 top: 130,
                 child: Container(
@@ -83,71 +145,6 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
       ),
     );
   }
-  Widget buildTop() => Row(
-
-      children: [
-
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 0.0),
-            child: Container(
-              color: myColors[COLOR_IMAGE],
-              width: double.infinity,
-              height: 170,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-
-                child: Row(
-                  children: [
-                    SizedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 8.0, left: 8),
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          // color: Colors.red,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13.0),
-                              color: Colors.white
-                          ),
-                          child:
-                          BackButton(color: Colors.grey,),
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 70.0, top: 10),
-                      child: Center(
-                        child: Text('Support Center',style: TextStyle(fontSize: 28,fontWeight: FontWeight.w600, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 8.0, left: 55),
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          // color: Colors.red,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13.0),
-                              color: Colors.white
-                          ),
-                          child: const Icon(
-                            Icons.notifications,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ]
-  );
 
   Widget buildTextField() => const TextField(
     decoration: InputDecoration(
@@ -157,9 +154,7 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
   );
 
   Widget BuildUserSupport() => Row(
-
     children: [
-
       Expanded(
         child: Container(
           decoration: BoxDecoration(
@@ -226,7 +221,6 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
   );
 
   Widget buildContent() => Column(
-
     children: [
       Padding(
         padding: const EdgeInsets.only(top:60.0, left: 40, right: 40),

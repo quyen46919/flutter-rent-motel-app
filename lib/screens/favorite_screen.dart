@@ -130,7 +130,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     ),
                   ),
                 )
-                ).toList(),
+             ).toList(),
           ),
         ),
       ],
