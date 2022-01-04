@@ -17,10 +17,16 @@ class _FavoritePageState extends State<FavoritePage> {
 
     return Center(
       child: Column(
-        children: listMotels.map((value) =>
+        children: listMotels.isEmpty
+            ? [
+                const Center(
+                  child: Text('Không có phòng trọ bạn đã theo dõi'),
+                )
+              ]
+            : listMotels.map((value) =>
             // sửa style tại đây
             Text(value.imageUrl)
-        ).toList(),
+            ).toList(),
       ),
     );
   }

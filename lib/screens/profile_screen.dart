@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_hotel_app/provider/user.dart';
 
 const PRIMARY = 'primary';
 const SECONDARY = 'secondary';
@@ -19,33 +21,35 @@ const Map<String,Color> myColors ={
   COLOR_IMAGE: Color.fromRGBO(73, 63, 113, 1),
 };
 
-class ProfilePage extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
-class _ProfilePageState extends State<ProfilePage>{
+class _ProfileScreenState extends State<ProfileScreen>{
   get child => null;
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body:
-      SingleChildScrollView(
-        child: Center(
-          child: Container(
-            color: myColors[BACKGROUND],
-            width: 430,
-            child: Column(
-              children: <Widget>[
-                buildTop(),
-                buildContent(),
-              ],
+    return Consumer<UserProvider>(
+        builder: (context, motelState, _) =>Scaffold(
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
+            child: Center(
+              child: Container(
+                color: myColors[BACKGROUND],
+                width: 430,
+                child: Column(
+                  children: <Widget>[
+                    buildTop(),
+                    buildContent(),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        )
     );
+
   }
   Widget buildContent() => Column(
     crossAxisAlignment: CrossAxisAlignment.start,

@@ -6,15 +6,15 @@ import 'package:travel_hotel_app/models/activity_model.dart';
 import 'package:travel_hotel_app/models/hotel_model.dart';
 import 'package:travel_hotel_app/provider/motels.dart';
 
-class HotelDetail extends StatefulWidget {
+class HotelDetailScreen extends StatefulWidget {
   final Motel motel;
-  const HotelDetail(this.motel);
+  const HotelDetailScreen(this.motel);
 
   @override
-  _HotelDetailState createState() => _HotelDetailState();
+  _HotelDetailScreenState createState() => _HotelDetailScreenState();
 }
 
-class _HotelDetailState extends State<HotelDetail> {
+class _HotelDetailScreenState extends State<HotelDetailScreen> {
   final oCcy = NumberFormat("#,###", "en_US");
 
   @override
