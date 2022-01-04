@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_hotel_app/screens/login_screen.dart';
-
 
 class ShowDiaLog extends StatelessWidget {
   final String message;
   final IconData icon;
-  const ShowDiaLog({ required this.message, this.icon = FontAwesomeIcons.key});
+  final String navigateType;
+  const ShowDiaLog({
+    required this.message,
+    this.icon = FontAwesomeIcons.key,
+    this.navigateType = "pushNamedAndRemoveUntil"
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +61,9 @@ class ShowDiaLog extends StatelessWidget {
                 style: TextStyle(color: Color(0xffdd74e8), fontSize: 25,),
               ),
               onPressed:() {
-                Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'));
+                navigateType == 'pushNamedAndRemoveUntil'
+                    ? Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'))
+                    : Navigator.pop(context);
               },
               style:
               ButtonStyle(

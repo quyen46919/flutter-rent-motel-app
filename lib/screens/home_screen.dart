@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/provider/motels.dart';
+import 'package:travel_hotel_app/provider/user.dart';
 import 'package:travel_hotel_app/widgets/category_list.dart';
 import 'package:travel_hotel_app/widgets/mansory_grid.dart';
 
@@ -96,9 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Xin chào, Nguyen Chau Quyen!',
-                style: TextStyle(
+              Text(
+                'Xin chào, ${Provider.of<UserProvider>(context).getCurrentUser().fullName}!',
+                style: const TextStyle(
                     fontSize: 16.0
                 ),
               ),

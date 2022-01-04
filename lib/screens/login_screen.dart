@@ -1,10 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_hotel_app/models/user_model.dart';
+import 'package:travel_hotel_app/provider/user.dart';
 import 'package:travel_hotel_app/widgets/background.dart';
-import 'package:travel_hotel_app/widgets/btn_forgot_password.dart';
+import 'package:travel_hotel_app/widgets/show_dialog.dart';
 import 'package:travel_hotel_app/widgets/social_icon.dart';
 import 'package:travel_hotel_app/screens/signup_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import 'forgot_password_screen.dart';
 
@@ -29,13 +35,46 @@ class _LoginScreenState extends State<LoginScreen> {
   var _emailcheckcolor = true;
   var _emailInvalid = true;
   var _passwordInvalid = true;
+  IconData _icon = FontAwesomeIcons.checkCircle;
+
+  getData(String email, String password) async {
+    String response = await rootBundle.loadString('assets/fakeAuthJSONData.json');
+
+    var tagObjsJson = jsonDecode(response)['result'] as List;
+    List<User> listUsers = tagObjsJson.map((tagJson) => User.fromJson(tagJson)).toList();
+
+    var foundUser = listUsers.where((user) => user.email == email);
+    if (foundUser.isNotEmpty) {
+      print("valid email");
+      var validPasswordList = foundUser.where((user) => user.password == password);
+      if (validPasswordList.isNotEmpty) {
+        print("valid password");
+        Provider.of<UserProvider>(context, listen: false).login(validPasswordList.first);
+        Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (context) => const HomeScreenTabs()
+          ),
+        );
+      } else {
+        print("invalid password");
+        showDialog(context: context, builder: (context) =>
+          const ShowDiaLog(message: "Mật khẩu không chính xác!", icon: FontAwesomeIcons.times, navigateType: 'pop')
+        );
+      }
+    } else {
+      print("invalid email");
+      showDialog(context: context, builder: (context) =>
+        const ShowDiaLog(message: "Email không tồn tại!", icon: FontAwesomeIcons.times, navigateType: 'pop')
+      );
+    }
+  }
 
   void onToggleShowPass(){
     setState(() {
       _showPass = !_showPass;
       if(!_showPass){
         _iconshowpass = FontAwesomeIcons.eyeSlash;
-      }else{
+      } else {
         _iconshowpass = FontAwesomeIcons.eye;
       }
     });
@@ -46,16 +85,18 @@ class _LoginScreenState extends State<LoginScreen> {
         _color = Colors.red;
       }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
         _color = Colors.red;
+        _icon = FontAwesomeIcons.timesCircle;
         _emailcheckcolor = false;
       }
       else{
         _color = Colors.green;
+        _icon = FontAwesomeIcons.checkCircle;
         _emailcheckcolor = true;
         _emailInvalid = true;
       }
     });
   }
-  void btnClick(){
+  void btnClick() async {
     setState(() {
       if(_emailControl.text.length < 8 ){
         _emailInvalid = false;
@@ -68,13 +109,11 @@ class _LoginScreenState extends State<LoginScreen> {
       }
       else{
         _passwordInvalid = true;
-        Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) => const HomeScreenTabs()
-          ),
-        );
       }
     });
+    if (_passwordInvalid == true && _emailInvalid == true) {
+      getData(_emailControl.text, _passwordControl.text);
+    }
   }
 
   @override
@@ -148,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
                             child: GestureDetector(
                               child:  Icon(
-                                FontAwesomeIcons.checkCircle,
+                                _icon,
                                 color: _color,
                                 size: 20,
                               ),
@@ -314,7 +353,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: size.height * 0.04),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child:  Container(
+                        child: Container(
                           height: 50,
                           width: 10000,
                           child: Row(

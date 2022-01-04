@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_hotel_app/screens/favorite_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen.dart';
-import 'package:travel_hotel_app/screens/profile_page.dart';
+import 'package:travel_hotel_app/screens/profile_screen.dart';
 import 'package:travel_hotel_app/screens/support_center_page.dart';
 
 class HomeScreenTabs extends StatefulWidget {
@@ -26,7 +26,7 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
     const HomeScreen(),
     const FavoritePage(),
     SupportCenterPage(),
-    ProfilePage(),
+    ProfileScreen(),
   ];
 
   Widget currentScreen = const HomeScreen();
@@ -147,7 +147,7 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                 minWidth:60.0,
                 onPressed: (){
                   setState(() {
-                    currentScreen = ProfilePage();
+                    currentScreen = ProfileScreen();
                     _currentTab = 3;
                   });
                 },

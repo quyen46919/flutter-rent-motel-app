@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/models/hotel_model.dart';
 import 'package:travel_hotel_app/provider/motels.dart';
-import 'package:travel_hotel_app/screens/hotel_detail.dart';
+import 'package:travel_hotel_app/screens/hotel_detail_screen.dart';
 
 class MasonryGrid extends StatelessWidget {
   const MasonryGrid({Key? key}) : super(key: key);
@@ -55,7 +55,7 @@ class MasonryGridItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (_) => HotelDetail(motel)
+              builder: (_) => HotelDetailScreen(motel)
           ),
         );
       },

@@ -10,6 +10,7 @@ class MotelProvider with  ChangeNotifier, DiagnosticableTreeMixin {
   void initialise() {
     favoriteMotelList = [];
     motelList = hotels;
+    currentFormality = '';
     notifyListeners();
   }
 
