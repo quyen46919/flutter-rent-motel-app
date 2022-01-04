@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/provider/motels.dart';
 import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
+import 'package:travel_hotel_app/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         ),
-        home: const HomeScreenTabs(),
+        home: const LoginScreen(),
       ),
     );
 

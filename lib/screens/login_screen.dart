@@ -6,9 +6,11 @@ import 'package:travel_hotel_app/widgets/social_icon.dart';
 import 'package:travel_hotel_app/screens/signup_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
 
+import 'forgot_password_screen.dart';
+
 
 class LoginScreen extends StatefulWidget {
-  static const routeName = "LogInScreen";
+  // static const routeName = "LogInScreen";
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -28,6 +30,52 @@ class _LoginScreenState extends State<LoginScreen> {
   var _emailInvalid = true;
   var _passwordInvalid = true;
 
+  void onToggleShowPass(){
+    setState(() {
+      _showPass = !_showPass;
+      if(!_showPass){
+        _iconshowpass = FontAwesomeIcons.eyeSlash;
+      }else{
+        _iconshowpass = FontAwesomeIcons.eye;
+      }
+    });
+  }
+  void checkEmail(value){
+    setState(() {
+      if(value==null) {
+        _color = Colors.red;
+      }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+        _color = Colors.red;
+        _emailcheckcolor = false;
+      }
+      else{
+        _color = Colors.green;
+        _emailcheckcolor = true;
+        _emailInvalid = true;
+      }
+    });
+  }
+  void btnClick(){
+    setState(() {
+      if(_emailControl.text.length < 8 ){
+        _emailInvalid = false;
+      }
+      else if (!_emailcheckcolor){
+        _emailInvalid = false;
+      }
+      if(_passwordControl.text.length < 6){
+        _passwordInvalid = false;
+      }
+      else{
+        _passwordInvalid = true;
+        Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (context) => const HomeScreenTabs()
+          ),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: size.height * 0.06),
+                      const SizedBox(height: 60.0),
                       Image.asset(
                         "assets/images/Logo_dong_a.png",
                         height: size.height * 0.12,
                       ),
-                      SizedBox(height: size.height * 0.03),
+                      const SizedBox(height: 30.0),
                       Stack(
                         alignment: AlignmentDirectional.centerEnd,
                         children: <Widget>[
@@ -74,12 +122,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onChanged: checkEmail,
                                 obscureText: false,
                                 cursorColor: Colors.grey,
-                                style: const TextStyle(fontSize: 17, color: Colors.black, height: 1.5, fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.black,
+                                    height: 1.5,
+                                    fontWeight: FontWeight.bold
+                                ),
                                 decoration: const InputDecoration(
                                   isCollapsed: false,
                                   filled: true,
                                   // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                  labelText: "Your Email",
+                                  labelText: "Địa chỉ email",
                                   labelStyle: TextStyle(
                                     color: Colors.grey,
                                   ),
@@ -88,7 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   border:
                                    InputBorder.none,
                                 ),
-
                               ),
                           ),
                         ),
@@ -140,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   isCollapsed: false,
                                   filled: true,
                                   // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                  labelText: "Password",
+                                  labelText: "Mật khẩu",
                                   labelStyle: TextStyle(
                                     color: Colors.grey,
                                   ),
@@ -167,7 +219,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       SizedBox(height: size.height * 0.01),
-                      const Btnforgotpassword(),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        padding: const EdgeInsets.only(right: 40.0),
+                        child: TextButton(
+                          child:  Text(
+                            'Quên mật khẩu?',
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: _textcolor,
+                              fontWeight: FontWeight.bold,
+
+                            ),
+                          ),
+                          onPressed:() {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => const ForgotPassword()),
+                            );
+                          },
+                        ),
+                      ),
                       SizedBox(height: size.height * 0.05),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -184,26 +255,25 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: ElevatedButton(
                             child: const Text(
-                              "Sign in",
+                              "Đăng nhập",
                               style: TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: btnClick,
-                            style:
-                            ButtonStyle( foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                                 backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15),
-
-                                    )),
-
+                                    )
+                                ),
                              )
                           ),
                         ),
                       ),
                       SizedBox(height: size.height * 0.05),
                        Text(
-                        "Or Sign Up With",
+                        "Hoặc đăng nhập với",
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           color: _textcolor,
@@ -243,7 +313,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: size.height * 0.04),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                         child:  Container(
                           height: 50,
                           width: 10000,
@@ -251,7 +321,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children:  <Widget>[
                                Text(
-                                 "Already Haven't Acount?",
+                                 "Bạn chưa có tài khoản?",
                                 style: TextStyle(
                                     color: _textcolor,
                                 fontWeight: FontWeight.w600,
@@ -269,7 +339,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: Row(
                                     children:  <Widget>[
                                       Text(
-                                        "Register",
+                                        "Đăng ký ngay",
                                         style: TextStyle(
                                             color: _textcolor,
                                             fontWeight: FontWeight.w600,
@@ -295,52 +365,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       backgroundColor:  const Color(0xffFDF8FE),
     );
-  }
-  void onToggleShowPass(){
-    setState(() {
-      _showPass = !_showPass;
-      if(!_showPass){
-        _iconshowpass = FontAwesomeIcons.eyeSlash;
-      }else{
-        _iconshowpass = FontAwesomeIcons.eye;
-      }
-    });
-  }
-  void checkEmail(value){
-    setState(() {
-      if(value==null) {
-        _color = Colors.red;
-      }if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-        _color = Colors.red;
-        _emailcheckcolor = false;
-      }
-      else{
-        _color = Colors.green;
-        _emailcheckcolor = true;
-        _emailInvalid = true;
-      }
-    });
-  }
-  void btnClick(){
-    setState(() {
-      if(_emailControl.text.length < 8 ){
-        _emailInvalid = false;
-      }
-      else if (!_emailcheckcolor){
-        _emailInvalid = false;
-      }
-      if(_passwordControl.text.length < 6){
-        _passwordInvalid = false;
-      }
-      else{
-        _passwordInvalid = true;
-        Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) => const HomeScreenTabs()
-          ),
-        );
-      }
-    });
   }
   }
 
