@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<String> _places = ['Không chung chủ', 'Chung chủ', 'Căn hộ', 'Ký túc xá'];
   final List<IconData> _icons = [
-    FontAwesomeIcons.user,
+    FontAwesomeIcons.userAlt,
     FontAwesomeIcons.users,
     FontAwesomeIcons.home,
     FontAwesomeIcons.city,
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 40.0,
                 width: 40.0,
                 child: const Icon(
-                  FontAwesomeIcons.bell,
+                  FontAwesomeIcons.moon,
                   size: 20.0,
                 ),
                 decoration: BoxDecoration(

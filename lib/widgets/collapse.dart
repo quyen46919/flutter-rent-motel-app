@@ -54,12 +54,12 @@ class Collapse extends StatelessWidget {
           ),
           collapsed: const Text(''),
           expanded: Container(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 10.0),
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20.0, top: 10.0),
             child: Text(
                 expanded,
                 style: const TextStyle(
                     fontSize: 18.0,
-                    color: Colors.black54,
+                    color: Colors.black38,
                 ),
             ),
           ),

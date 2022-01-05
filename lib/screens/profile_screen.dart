@@ -46,12 +46,12 @@ class _ProfileScreenState extends State<ProfileScreen>{
                   width: 430,
                   child: Column(
                     children: <Widget>[
-                      HeaderBackground(header: "Cá nhân"),
+                      const HeaderBackground(header: "Cá nhân"),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(color: Colors.purple[400],),
+                          Container(color: Colors.purple[400]),
                           const SizedBox(
                             child:
                             Padding(
@@ -82,7 +82,10 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                           padding: const EdgeInsets.only(left: 7.0),
                                           child: Text(
                                             'Họ đệm',
-                                            style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
+                                            style: TextStyle(
+                                                color: myColors[BASIC_LIGHT],
+                                                fontSize: 12.0
+                                            ),
                                           ),
                                         ),
                                         Padding(
@@ -94,7 +97,11 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                                 .sublist(0, userFullnameLength)
                                                 .join(" "),
                                             // textScaleFactor: 1,
-                                            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14.0),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 16.0
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -137,7 +144,11 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                           child: Text(
                                             currentUser.fullName.toString().split(" ").removeLast(),
                                             // textScaleFactor: 1,
-                                            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14.0),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 16.0
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -191,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                                 style: const TextStyle(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w700,
-                                                    fontSize: 14.0
+                                                    fontSize: 16.0
                                                 ),
                                               ),
                                             ),
@@ -239,7 +250,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                               child: Text(
                                                 currentUser.phone.toString(),
                                                 // textScaleFactor: 1,
-                                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14.0),
+                                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 16.0),
                                               ),
                                             ),
                                           ],
@@ -292,7 +303,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                             style: const TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w700,
-                                                fontSize: 14.0
+                                                fontSize: 16.0
                                             ),
                                           ),
                                         ),
@@ -339,7 +350,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                             style: const TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w700,
-                                                fontSize: 14.0
+                                                fontSize: 16.0
                                             ),
                                           ),
                                         ),
@@ -406,7 +417,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                               child: Text(
                                                 currentUser.address.toString(),
                                                 // textScaleFactor: 1,
-                                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 14.0),
+                                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 16.0),
                                               ),
                                             ),
                                           ],
@@ -455,7 +466,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                                   style: const TextStyle(
                                                       color: Colors.black,
                                                       fontWeight: FontWeight.w700,
-                                                      fontSize: 14.0
+                                                      fontSize: 16.0
                                                   ),
                                                 ),
                                               ),
@@ -479,11 +490,9 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                       width: 180,
                                     ),
                                     Container(
-                                      child:
-                                      Padding(
+                                      child: Padding(
                                           padding: const EdgeInsets.all(8.0),
-                                          child:
-                                          Column(
+                                          child: Column(
                                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
@@ -502,7 +511,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                                   style: const TextStyle(
                                                       color: Colors.black,
                                                       fontWeight: FontWeight.w700,
-                                                      fontSize: 14.0
+                                                      fontSize: 16.0
                                                   ),
                                                 ),
                                               ),
