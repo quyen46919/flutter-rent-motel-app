@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/models/hotel_model.dart';
 import 'package:travel_hotel_app/provider/motels.dart';
+import 'package:travel_hotel_app/screens/hotel_detail_screen.dart';
+import 'package:travel_hotel_app/widgets/header_background.dart';
 
 final oCcy = NumberFormat("#,###", "en_US");
 
@@ -21,18 +23,18 @@ class _FavoritePageState extends State<FavoritePage> {
     List<Motel> listMotels = Provider.of<MotelProvider>(context).favoriteMotelList;
     return ListView(
       children: [
-        buildTop(),
+        const HeaderBackground(header: "Danh sách theo dõi"),
         Center(
-
           child: Column(
-            children:
-            listMotels.isEmpty
+            children: listMotels.isEmpty
                 ? [
                     Container(
-                      height: 350.0,
+                      color: const Color(0xffF6F3FA),
+                      height: 500.0,
                       width: double.infinity,
                       child: const Center(
-                        child: Text('Không có phòng trọ bạn đã theo dõi',
+                        child: Text(
+                          'Không có phòng trọ bạn đã theo dõi',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
@@ -44,87 +46,103 @@ class _FavoritePageState extends State<FavoritePage> {
                   ]
                 : listMotels.map((motel) =>
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: Colors.white,
+                  decoration: const BoxDecoration(
+                    color: Color(0xffF6F3FA),
                   ),
-                  child: Slidable(
-                    actionPane: SlidableDrawerActionPane(),
-                    actionExtentRatio: 0.25,
-                    secondaryActions: [
-                      IconSlideAction(
-                        color: Colors.red,
-                        icon: Icons.delete,
-                        onTap: ()=>Provider.of<MotelProvider>(context, listen: false).toggleFavoriteMotel(motel),
-                      )
-                    ],
-                    child: ListTile(
-                      title:  Padding(
-                        padding: const EdgeInsets.only(bottom:10.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              // color: Colors.red,
-                              width: 170.0,
-                              height: 110.0,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage(motel.imageUrl)
-                                ),
-                                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                color: Colors.red,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20.0,
-                            ),
-                            Container(
-                              height: 110.0,
-                              width: 180.0,
-                              // color: Colors.red,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    motel.name,
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        color: Color.fromRGBO(52, 40, 97, 1) ,
-                                        fontWeight: FontWeight.w800
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.white,
+                      ),
+                      child: Slidable(
+                        actionPane: const SlidableDrawerActionPane(),
+                        actionExtentRatio: 0.25,
+                        secondaryActions: [
+                          IconSlideAction(
+                            color: Colors.red,
+                            icon: Icons.delete,
+                            onTap: () => Provider.of<MotelProvider>(context, listen: false).toggleFavoriteMotel(motel),
+                          )
+                        ],
+                        child: ListTile(
+                          title:  Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => HotelDetailScreen(motel)
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    width: 170.0,
+                                    height: 120.0,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(motel.imageUrl)
+                                      ),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20.0)
+                                      ),
+                                      color: Colors.white,
                                     ),
                                   ),
-                                   Padding(
-                                    padding: EdgeInsets.only(bottom: 18.0),
-                                    child: Text(
-                                      motel.address,
+                                ),
+                                const SizedBox(
+                                  width: 20.0,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 15.0),
+                                      Text(
+                                        motel.address,
+                                        style: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color.fromRGBO(52, 40, 97, 1) ,
+                                            fontWeight: FontWeight.w800
+                                        ),
+                                      ),
+                                      const SizedBox(height: 5.0),
+                                      Text(
+                                        motel.address,
                                         style: const TextStyle(
                                             fontSize: 13,
                                             color: Colors.grey ,
                                             fontWeight: FontWeight.w800
                                         ),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "${oCcy.format(motel.price)} vnđ" ,
-                                        style: const TextStyle(
-                                            color: Colors.purpleAccent,
-                                            fontWeight: FontWeight.w800,
-                                            fontSize: 15
-                                        ),
-                                      ), // Padding(
+                                      ),
+                                      const SizedBox(height: 15.0),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "${oCcy.format(motel.price)} vnđ" ,
+                                            style: const TextStyle(
+                                                color: Colors.purpleAccent,
+                                                fontSize: 18.0
+                                            ),
+                                          ), // Padding(
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -136,37 +154,4 @@ class _FavoritePageState extends State<FavoritePage> {
       ],
     );
   }
-  Widget buildTop() => Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomRight: Radius.circular(70.0),
-                ),
-                color: Color.fromRGBO(73, 63, 113, 1),
-              ),
-              // color: myColors[COLOR_IMAGE],
-              width: double.infinity,
-              height: 140,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Center(
-                      child: Text('Danh sách theo dõi',style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-            ),
-          ),
-        ),
-      ]
-  );
 }

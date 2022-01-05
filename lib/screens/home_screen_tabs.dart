@@ -120,7 +120,7 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                 minWidth:60.0,
                 onPressed: (){
                   setState(() {
-                    currentScreen = SupportCenterScreen();
+                    currentScreen = const SupportCenterScreen();
                     _currentTab = 2;
                   });
                 },

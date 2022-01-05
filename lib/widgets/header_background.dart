@@ -10,9 +10,16 @@ class HeaderBackground extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              color: const Color.fromRGBO(73, 63, 113, 1),
               width: double.infinity,
               height: 140,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                      'assets/images/header-background.png'
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,7 +29,8 @@ class HeaderBackground extends StatelessWidget {
                       header,
                       style: const TextStyle(
                           fontSize: 28,
-                          color: Colors.white
+                          color: Colors.white,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ),

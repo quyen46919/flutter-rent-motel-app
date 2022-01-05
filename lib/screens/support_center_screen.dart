@@ -54,7 +54,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: myColors[BACKGROUND],
+      backgroundColor: const Color(0xffF6F3FA),
       body: SingleChildScrollView(
         child: Column(
           children: [
