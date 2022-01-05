@@ -85,7 +85,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                       child: InkWell(
                         child: Icon(
                           motelState.favoriteMotelList.where((motel) => motel.id == widget.motel.id).isEmpty
-                              ? FontAwesomeIcons.heartBroken
+                              ? FontAwesomeIcons.bookmark
                               : Icons.favorite,
                           size: 30.0,
                           color: motelState.favoriteMotelList.where((motel) => motel.id == widget.motel.id).isEmpty

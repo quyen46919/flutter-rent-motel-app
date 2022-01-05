@@ -38,7 +38,7 @@ class Motel {
 final List<Motel> hotels = [
   Motel(
     id: "motel1",
-    imageUrl: 'assets/images/image9.jpg',
+    imageUrl: 'assets/images/nhatro1.jpg',
     name: '02 Cống Quỳnh',
     address: 'Hòa Cường Nam, Đà Nẵng',
     price: 2300000,
@@ -55,7 +55,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel2",
-    imageUrl: 'assets/images/image10.jpg',
+    imageUrl: 'assets/images/nhatro2.jpg',
     name: '124 Cách mạng tháng 8',
     address: 'Cẩm Lệ',
     price: 2320000,
@@ -72,7 +72,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel3",
-    imageUrl: 'assets/images/image11.jpg',
+    imageUrl: 'assets/images/nhatro3.jpg',
     name: '51 Lê Sát',
     address: 'Hòa Cường Nam, Hải Châu',
     price: 1900000,
@@ -89,7 +89,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel4",
-    imageUrl: 'assets/images/image12.jfif',
+    imageUrl: 'assets/images/nhatro4.jpg',
     name: '551 Tố Hữu',
     address: 'Hải Châu',
     price: 3400000,
@@ -106,7 +106,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel5",
-    imageUrl: 'assets/images/image2.jpg',
+    imageUrl: 'assets/images/nhatro5.jpg',
     name: '214 Trưng Nữ Vương',
     address: 'Liên Chiểu',
     price: 2000000,
@@ -123,7 +123,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel6",
-    imageUrl: 'assets/images/image3.jpg',
+    imageUrl: 'assets/images/nhatro1.jpg',
     name: '95 Cống Quỳnh',
     address: 'Cẩm Lệ',
     price: 4000000,
@@ -140,7 +140,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel7",
-    imageUrl: 'assets/images/image3.jpg',
+    imageUrl: 'assets/images/nhatro7.jpg',
     name: '02 Lê Hữu Trác',
     address: 'Thanh Khê',
     price: 2500000,
@@ -157,7 +157,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel8",
-    imageUrl: 'assets/images/image3.jpg',
+    imageUrl: 'assets/images/nhatro8.png',
     name: '95 Trần Hưng Đạo',
     address: 'Thanh Khê',
     price: 2540000,
@@ -174,7 +174,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel9",
-    imageUrl: 'assets/images/image4.jpg',
+    imageUrl: 'assets/images/nhatro3.jpg',
     name: '57 Trưng Trắc',
     address: 'Thanh Khê',
     price: 2930000,
@@ -191,7 +191,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel10",
-    imageUrl: 'assets/images/image5.jpg',
+    imageUrl: 'assets/images/nhatro10.jpg',
     name: '884 Lê Duẩn',
     address: 'Ngũ Hành Sơn',
     price: 1300000,
@@ -208,7 +208,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel11",
-    imageUrl: 'assets/images/image6.jpg',
+    imageUrl: 'assets/images/nhatro11.jpg',
     name: '66 Trần Hưng Đạo',
     address: 'Liên Chiểu',
     price: 1750000,
@@ -225,7 +225,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel12",
-    imageUrl: 'assets/images/image7.jpg',
+    imageUrl: 'assets/images/nhatro10.jpg',
     name: '88 đường 2-9',
     address: 'Hải Châu',
     price: 1950000,
@@ -242,7 +242,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel13",
-    imageUrl: 'assets/images/image8.jpg',
+    imageUrl: 'assets/images/nhatro13.jpg',
     name: 'K551/15 2-9',
     address: 'Hòa Cường Nam, Hải Châu',
     price: 1680000,
@@ -259,7 +259,7 @@ final List<Motel> hotels = [
   ),
   Motel(
     id: "motel14",
-    imageUrl: 'assets/images/image9.jpg',
+    imageUrl: 'assets/images/nhatro14.jpg',
     name: '26 Hồ Chí Minh',
     address: 'Hải Châu',
     price: 1420000,
