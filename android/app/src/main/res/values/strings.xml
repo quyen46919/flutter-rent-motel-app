@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flutter_UDA_Motel_App</string>
+    <string name="facebook_app_id">506801254135347</string>
+    <string name="fb_login_protocol_scheme">fb506801254135347</string>
+    <string name="facebook_client_token">e5cdd5b2f76f1ba5a8e0956763175ca6</string>
+</resources>
+
