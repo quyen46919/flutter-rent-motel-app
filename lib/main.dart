@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/provider/motels.dart';
 import 'package:travel_hotel_app/provider/user.dart';
+import 'package:travel_hotel_app/screens/facebook_app.dart';
 import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
 import 'package:travel_hotel_app/screens/login_screen.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         ),
-        home: const LoginScreen(),
+        home: const FacebookApp(),
       ),
     );
 
