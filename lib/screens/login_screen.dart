@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/models/user_model.dart';
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
       var validPasswordList = foundUser.where((user) => user.password == password);
       if (validPasswordList.isNotEmpty) {
         print("valid password");
-        Provider.of<UserProvider>(context, listen: false).login(validPasswordList.first);
+        // Provider.of<UserProvider>(context, listen: false).login(validPasswordList.first);
         Navigator.of(context).push(
           MaterialPageRoute(
               builder: (context) => const HomeScreenTabs()
@@ -122,40 +123,41 @@ class _LoginScreenState extends State<LoginScreen> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Background(
+      body: Consumer<UserProvider>(
+        builder: (context, userState, _) => Background(
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      const SizedBox(height: 60.0),
-                      Image.asset(
-                        "assets/images/Logo_dong_a.png",
-                        height: size.height * 0.12,
-                      ),
-                      const SizedBox(height: 30.0),
-                      Stack(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    const SizedBox(height: 60.0),
+                    Image.asset(
+                      "assets/images/Logo_dong_a.png",
+                      height: size.height * 0.12,
+                    ),
+                    const SizedBox(height: 30.0),
+                    Stack(
                         alignment: AlignmentDirectional.centerEnd,
                         children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Container(
-                            width:10000,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: _emailInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
-                                  spreadRadius: 1,
-                                  blurRadius: 15,
-                                  offset: const Offset(0, 2), // changes position of shadow
-                                ),
-                              ],
-                            ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Container(
+                              width:10000,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: _emailInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
+                                    spreadRadius: 1,
+                                    blurRadius: 15,
+                                    offset: const Offset(0, 2), // changes position of shadow
+                                  ),
+                                ],
+                              ),
                               child: TextFormField(
                                 controller: _emailControl,
                                 onChanged: checkEmail,
@@ -178,11 +180,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fillColor: Color.fromRGBO(239, 222, 252, 0),
                                   hoverColor: Color.fromRGBO(1, 1, 1, 0),
                                   border:
-                                   InputBorder.none,
+                                  InputBorder.none,
                                 ),
                               ),
+                            ),
                           ),
-                        ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
                             child: GestureDetector(
@@ -193,106 +195,106 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                      ]
-                      ),
-                      SizedBox(height: size.height * 0.045),
-                      Stack(
-                        alignment: AlignmentDirectional.centerEnd,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Container(
-                              width:10000,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: _passwordInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
-                                    spreadRadius: 1,
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 2), // changes position of shadow
-                                  ),
-                                ],
+                        ]
+                    ),
+                    SizedBox(height: size.height * 0.045),
+                    Stack(
+                      alignment: AlignmentDirectional.centerEnd,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Container(
+                            width:10000,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: _passwordInvalid?_trueinputvalidcolor:_falseinputvalidcolor,
+                                  spreadRadius: 1,
+                                  blurRadius: 15,
+                                  offset: const Offset(0, 2), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            child: TextFormField(
+                              controller: _passwordControl,
+                              obscureText: _showPass,
+                              cursorColor: Colors.grey,
+                              style: const TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black,
+                                  height: 1.5,
+                                  fontWeight: FontWeight.bold
                               ),
-                              child: TextFormField(
-                                controller: _passwordControl,
-                                obscureText: _showPass,
-                                cursorColor: Colors.grey,
-                                style: const TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.bold
+                              decoration: const InputDecoration(
+                                // hintText: "PassWord",
+                                isCollapsed: false,
+                                filled: true,
+                                // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                                labelText: "Mật khẩu",
+                                labelStyle: TextStyle(
+                                  color: Colors.grey,
                                 ),
-                                decoration: const InputDecoration(
-                                  // hintText: "PassWord",
-                                  isCollapsed: false,
-                                  filled: true,
-                                  // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                  labelText: "Mật khẩu",
-                                  labelStyle: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                  fillColor: Color.fromRGBO(239, 222, 252, 0),
-                                  hoverColor: Color.fromRGBO(1, 1, 1, 0),
-                                  border:
-                                  InputBorder.none,
-                                ),
+                                fillColor: Color.fromRGBO(239, 222, 252, 0),
+                                hoverColor: Color.fromRGBO(1, 1, 1, 0),
+                                border:
+                                InputBorder.none,
                               ),
                             ),
                           ),
-                         Padding(
-                           padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
-                           child: GestureDetector(
-                             onTap: onToggleShowPass,
-                             child:  Icon(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
+                          child: GestureDetector(
+                            onTap: onToggleShowPass,
+                            child:  Icon(
                               _iconshowpass,
                               color: Colors.grey,
                               size: 20,
-                              ),
-                           ),
-                         ),
-
-                        ],
-                      ),
-                      SizedBox(height: size.height * 0.01),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        padding: const EdgeInsets.only(right: 40.0),
-                        child: TextButton(
-                          child:  Text(
-                            'Quên mật khẩu?',
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: _textcolor,
-                              fontWeight: FontWeight.bold,
-
                             ),
                           ),
-                          onPressed:() {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => const ForgotPassword()),
-                            );
-                          },
                         ),
-                      ),
-                      SizedBox(height: size.height * 0.05),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Container(
-                          height: 60,
-                          width: 10000,
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow( color: _trueinputvalidcolor,
-                                  spreadRadius: 10,
-                                  blurRadius: 20,
-                                  offset: const Offset(5, 10),)
-                              ]
+
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.01),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      padding: const EdgeInsets.only(right: 40.0),
+                      child: TextButton(
+                        child:  Text(
+                          'Quên mật khẩu?',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: _textcolor,
+                            fontWeight: FontWeight.bold,
+
                           ),
-                          child: ElevatedButton(
+                        ),
+                        onPressed:() {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => const ForgotPassword()),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.05),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Container(
+                        height: 60,
+                        width: 10000,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow( color: _trueinputvalidcolor,
+                                spreadRadius: 10,
+                                blurRadius: 20,
+                                offset: const Offset(5, 10),)
+                            ]
+                        ),
+                        child: ElevatedButton(
                             child: const Text(
                               "Đăng nhập",
                               style: TextStyle(color: Colors.white, fontSize: 20),
@@ -300,108 +302,127 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: btnClick,
                             style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
-                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                    )
-                                ),
-                             )
-                          ),
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  )
+                              ),
+                            )
                         ),
                       ),
-                      SizedBox(height: size.height * 0.05),
-                       Text(
-                        "Hoặc đăng nhập với",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          color: _textcolor,
-                        ),
+                    ),
+                    SizedBox(height: size.height * 0.05),
+                    Text(
+                      "Hoặc đăng nhập với",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        color: _textcolor,
                       ),
-                      SizedBox(height: size.height * 0.03),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          SocalIcon(
-                            icon: const Icon(
-                              FontAwesomeIcons.googlePlusG,
-                              color: Color.fromRGBO(217, 45, 14, 1),
-                            ),
-                            press: () {},
-                            colorbox: const Color.fromRGBO(252, 223, 207, 0.7),
+                    ),
+                    SizedBox(height: size.height * 0.03),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SocalIcon(
+                          icon: const Icon(
+                            FontAwesomeIcons.googlePlusG,
+                            color: Color.fromRGBO(217, 45, 14, 1),
                           ),
-                          SocalIcon(
-                            icon: const Icon(
+                          press: () {},
+                          colorbox: const Color.fromRGBO(252, 223, 207, 0.7),
+                        ),
+                        ElevatedButton(
+                            onPressed: () async {
+                              late User returnData;
+                              final result = await FacebookAuth.i.login(
+                                  permissions: ["public_profile", "email"]
+                              );
+                              if (result.status == LoginStatus.success){
+                                await FacebookAuth.i.getUserData(
+                                    fields: "email, name"
+                                ).then((value) {
+                                  returnData = User(id: value['id'], email: value['email'], fullName: value['name']);
+                                  userState.login(returnData);
+                                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>
+                                    const HomeScreenTabs()),(route) => false);
+                                });
+                              }
+                            },
+                            child: const Icon(
                               FontAwesomeIcons.facebookF,
-                              color: Color.fromRGBO(7, 31, 219, 1),
+                              color: Colors.blueAccent,
                             ),
-                            coloricon: const Color.fromRGBO(217, 45, 14, 1),
-                            press: () {},
-                            colorbox: const Color.fromRGBO(214, 221, 255, 0.7),
+                          style: ElevatedButton.styleFrom(
+                            shape: const CircleBorder(),
+                            padding: const EdgeInsets.all(20),
+                            primary: Colors.white, // <-- Button color
+                            onPrimary: Colors.white30, // <-- Splash color
                           ),
-                          SocalIcon(
-                            icon: const Icon(
-                              FontAwesomeIcons.twitter,
-                              color: Color.fromRGBO(7, 137, 242, 1),
-                            ),
-                            press: () {},
-                            colorbox: const Color.fromRGBO(215, 238, 250, 0.7),
+                        ),
+                        SocalIcon(
+                          icon: const Icon(
+                            FontAwesomeIcons.twitter,
+                            color: Color.fromRGBO(7, 137, 242, 1),
                           ),
+                          press: () {},
+                          colorbox: const Color.fromRGBO(215, 238, 250, 0.7),
+                        ),
 
-                        ],
-                      ),
-                      SizedBox(height: size.height * 0.04),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Container(
-                          height: 50,
-                          width: 10000,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children:  <Widget>[
-                               Text(
-                                 "Bạn chưa có tài khoản?",
-                                style: TextStyle(
-                                    color: _textcolor,
-                                fontWeight: FontWeight.w600,
-                                    fontSize: 17),
-                               ),
-                              TextButton(
-                                  onPressed: (){
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                          settings: const RouteSettings(name: '/login'),
-                                          builder: (context) => const SignUpScreen()
-                                      ),
-                                    );
-                                  },
-                                  child: Row(
-                                    children:  <Widget>[
-                                      Text(
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.04),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      child: Container(
+                        height: 50,
+                        width: 10000,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children:  <Widget>[
+                            Text(
+                              "Bạn chưa có tài khoản?",
+                              style: TextStyle(
+                                  color: _textcolor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17),
+                            ),
+                            TextButton(
+                                onPressed: (){
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        settings: const RouteSettings(name: '/login'),
+                                        builder: (context) => const SignUpScreen()
+                                    ),
+                                  );
+                                },
+                                child: Row(
+                                  children:  <Widget>[
+                                    Text(
                                         "Đăng ký ngay",
                                         style: TextStyle(
                                             color: _textcolor,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 17)
-                                      ),
-                                        const Icon(
-                                            FontAwesomeIcons.caretRight,
-                                            color:Colors.deepPurple
-                                        ),
-                                    ],
-                                  )
-                              ),
-                            ],
-                          ),
+                                    ),
+                                    const Icon(
+                                        FontAwesomeIcons.caretRight,
+                                        color:Colors.deepPurple
+                                    ),
+                                  ],
+                                )
+                            ),
+                          ],
                         ),
-                      )
-                    ],
-                  ),
-                ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
 
             )
 
-        ),
+        )),
       backgroundColor:  const Color(0xffFDF8FE),
     );
   }

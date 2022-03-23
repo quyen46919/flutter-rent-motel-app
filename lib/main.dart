@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         ),
-        home: const FacebookApp(),
+        home: const LoginScreen(),
       ),
     );
 

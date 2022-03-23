@@ -1,4 +1,5 @@
 class User {
+  String? id;
   String? email;
   String? password;
   String? fullName;
@@ -10,6 +11,7 @@ class User {
   String? country;
 
   User({
+    this.id,
     this.email,
     this.password,
     this.fullName,
@@ -22,6 +24,7 @@ class User {
   });
 
   User.fromJson(Map<String,dynamic> json) {
+    id = json['id'];
     email = json['email'];
     password =json['password'];
     fullName = json['fullName'];
