@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_hotel_app/screens/favorite_screen.dart';
-import 'package:travel_hotel_app/screens/home_screen.dart';
+import 'package:travel_hotel_app/screens/home_detail_screen.dart';
 import 'package:travel_hotel_app/screens/profile_screen.dart';
 import 'package:travel_hotel_app/screens/support_center_screen.dart';
 

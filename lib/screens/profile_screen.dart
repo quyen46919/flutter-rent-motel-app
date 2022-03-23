@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/provider/user.dart';
+import 'package:travel_hotel_app/screens/login_screen.dart';
 import 'package:travel_hotel_app/widgets/header_background.dart';
 
 const PRIMARY = 'primary';
@@ -549,7 +550,13 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                   style: TextStyle(color: Colors.white, fontSize: 20),
                                 ),
                                 onPressed: () {
-                                  Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'));
+                                  Provider.of<UserProvider>(context, listen: false).logout();
+                                  // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>
+                                  // const LoginScreen()),(route) => false);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                                  );
                                 },
                                 style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
