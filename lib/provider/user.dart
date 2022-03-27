@@ -10,7 +10,7 @@ class UserProvider with ChangeNotifier, DiagnosticableTreeMixin {
     notifyListeners();
   }
 
-  // void loginWithFacebook(User user) async {
+  // this function is hard code in loginScreen
   void loginWithFacebook() async {
     final result = await FacebookAuth.i.login(
         permissions: ["public_profile", "email"]
@@ -23,6 +23,12 @@ class UserProvider with ChangeNotifier, DiagnosticableTreeMixin {
         notifyListeners();
       });
     }
+  }
+
+  void facebookLogout() async {
+    await FacebookAuth.i.logOut();
+    currentUser = User(id: '', email: '', fullName: '');
+    notifyListeners();
   }
 
   void login(User user) {
