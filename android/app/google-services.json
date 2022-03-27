@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "503718951409",
+    "project_id": "chia-se-tro",
+    "storage_bucket": "chia-se-tro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503718951409:android:fc8ceb6a2525b27f40ac50",
+        "android_client_info": {
+          "package_name": "com.example.travel_hotel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503718951409-jqm0t69t0t5k7otnlc9qpaoc8or1l365.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travel_hotel_app",
+            "certificate_hash": "30ad88ebc9bfa8c18c835518d731636f6f2b94a2"
+          }
+        },
+        {
+          "client_id": "503718951409-l6070p4fnqqnc5c02o645ov80muqhosj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4kt7HYIo_xzUrBMmsMst2pQwZsBfp7nY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503718951409-l6070p4fnqqnc5c02o645ov80muqhosj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
