@@ -5,6 +5,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/models/user_model.dart';
+import 'package:travel_hotel_app/provider/google_sign_in.provider.dart';
 import 'package:travel_hotel_app/provider/user.dart';
 import 'package:travel_hotel_app/widgets/background.dart';
 import 'package:travel_hotel_app/widgets/show_dialog.dart';
@@ -12,7 +13,6 @@ import 'package:travel_hotel_app/widgets/social_icon.dart';
 import 'package:travel_hotel_app/screens/signup_screen.dart';
 import 'package:travel_hotel_app/screens/home_screen_tabs.dart';
 import 'package:flutter/services.dart' show rootBundle;
-
 import 'forgot_password_screen.dart';
 
 
@@ -37,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
   var _emailInvalid = true;
   var _passwordInvalid = true;
   IconData _icon = FontAwesomeIcons.checkCircle;
+  late User returnData;
 
   getData(String email, String password) async {
     String response = await rootBundle.loadString('assets/fakeAuthJSONData.json');
@@ -280,36 +281,33 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     ),
-                    SizedBox(height: size.height * 0.05),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: Container(
-                        height: 60,
-                        width: 10000,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow( color: _trueinputvalidcolor,
-                                spreadRadius: 10,
-                                blurRadius: 20,
-                                offset: const Offset(5, 10),)
-                            ]
-                        ),
-                        child: ElevatedButton(
-                            child: const Text(
-                              "Đăng nhập",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                    SizedBox(height: 10.0),
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow( color: _trueinputvalidcolor,
+                              spreadRadius: 10,
+                              blurRadius: 20,
+                              offset: const Offset(5, 10),)
+                          ]
+                      ),
+                      child: ElevatedButton(
+                          child: const Text(
+                            "Đăng nhập",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          onPressed: btnClick,
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                )
                             ),
-                            onPressed: btnClick,
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                  )
-                              ),
-                            )
-                        ),
+                          )
                       ),
                     ),
                     SizedBox(height: size.height * 0.05),
@@ -318,23 +316,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
                         color: _textcolor,
+                        fontSize: 17
                       ),
                     ),
                     SizedBox(height: size.height * 0.03),
-                    Row(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        SocalIcon(
-                          icon: const Icon(
-                            FontAwesomeIcons.googlePlusG,
-                            color: Color.fromRGBO(217, 45, 14, 1),
-                          ),
-                          press: () {},
-                          colorbox: const Color.fromRGBO(252, 223, 207, 0.7),
-                        ),
-                        ElevatedButton(
+                        Container(
+                          height: 50.0,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: ElevatedButton.icon(
+                            icon: const Icon(FontAwesomeIcons.facebookF),
+                            label: const Text("Đăng nhập với tài khoản Facebook"),
                             onPressed: () async {
-                              late User returnData;
                               final result = await FacebookAuth.i.login(
                                   permissions: ["public_profile", "email"]
                               );
@@ -345,33 +340,43 @@ class _LoginScreenState extends State<LoginScreen> {
                                   returnData = User(id: value['id'], email: value['email'], fullName: value['name']);
                                   userState.login(returnData);
                                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>
-                                    const HomeScreenTabs()),(route) => false);
+                                  const HomeScreenTabs()),(route) => false);
                                 });
                               }
                             },
-                            child: const Icon(
-                              FontAwesomeIcons.facebookF,
-                              color: Colors.blueAccent,
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
                             ),
-                          style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder(),
-                            padding: const EdgeInsets.all(20),
-                            primary: Colors.white, // <-- Button color
-                            onPrimary: Colors.white30, // <-- Splash color
                           ),
                         ),
-                        SocalIcon(
-                          icon: const Icon(
-                            FontAwesomeIcons.twitter,
-                            color: Color.fromRGBO(7, 137, 242, 1),
+                        const SizedBox(height: 10.0),
+                        Container(
+                          height: 50.0,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: ElevatedButton.icon(
+                            icon: const Icon(FontAwesomeIcons.google),
+                            label: const Text("Đăng nhập với tài khoản Google"),
+                            onPressed: () async {
+                              final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                              await provider.googleLogin().then((value) {
+                                returnData = User(id: value?.id, email: value?.email, fullName: value?.displayName);
+                                userState.login(returnData);
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>
+                                const HomeScreenTabs()),(route) => false);
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
                           ),
-                          press: () {},
-                          colorbox: const Color.fromRGBO(215, 238, 250, 0.7),
-                        ),
-
+                        )
                       ],
                     ),
-                    SizedBox(height: size.height * 0.04),
+                    const SizedBox(height: 40.0),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: Container(

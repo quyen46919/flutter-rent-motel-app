@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_hotel_app/provider/google_sign_in.provider.dart';
 import 'package:travel_hotel_app/provider/user.dart';
 import 'package:travel_hotel_app/screens/login_screen.dart';
 import 'package:travel_hotel_app/widgets/header_background.dart';
@@ -543,7 +544,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                           Container(
                             width: double.infinity,
                             padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 40.0),
-                            height: 110.0,
+                            height: 105.0,
                             child: ElevatedButton(
                                 child: const Text(
                                   "Đăng xuất",
@@ -551,8 +552,8 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                 ),
                                 onPressed: () {
                                   Provider.of<UserProvider>(context, listen: false).logout();
-                                  // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>
-                                  // const LoginScreen()),(route) => false);
+                                  Provider.of<UserProvider>(context, listen: false).facebookLogout();
+                                  Provider.of<GoogleSignInProvider>(context, listen: false).logout();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(builder: (context) => const LoginScreen()),
