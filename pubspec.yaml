@@ -43,6 +43,8 @@ dependencies:
   flutter_polyline_points: ^0.2.6
   google_maps_flutter: ^2.0.2
   uuid: ^3.0.0
+  fluster: ^1.2.0
+  google_maps_cluster_manager: ^3.0.0
 
 dev_dependencies:
   flutter_test:

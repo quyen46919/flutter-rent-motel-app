@@ -63,8 +63,8 @@ final List<Motel> hotels = [
     waterPrice: 30000,
     deposit: 'Đặt cọc trước 6 tháng, sau 6 tháng hoàn lại tiền cọc',
     formality: 'Không chung chủ',
-    latitude: 16.0553,
-    longtitude: 108.5212
+    latitude: 16.0365,
+    longtitude: 108.2288
   ),
   Motel(
     id: "motel2",
@@ -89,8 +89,8 @@ final List<Motel> hotels = [
     waterPrice: 6000,
     deposit: 'Đặt cọc trước 3 tháng, sau 3 tháng hoàn lại tiền cọc',
     formality: 'Không chung chủ',
-    latitude: 16.0653,
-    longtitude: 108.1212
+    latitude: 16.0376,
+    longtitude: 108.2217
   ),
   Motel(
     id: "motel3",
@@ -115,8 +115,8 @@ final List<Motel> hotels = [
     waterPrice: 7000,
     deposit: 'Đặt cọc trước 1 tháng',
     formality: 'Chung chủ',
-    latitude: 16.0613,
-    longtitude: 108.5515
+    latitude: 16.0372,
+    longtitude: 108.2136
   ),
   Motel(
     id: "motel4",
@@ -141,8 +141,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 2 tháng',
     formality: 'Chung chủ',
-    latitude: 16.0293,
-    longtitude: 108.4512
+    latitude: 16.02701,
+    longtitude: 108.2165
   ),
   Motel(
     id: "motel5",
@@ -167,8 +167,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 4 tháng',
     formality: 'Chung chủ',
-    latitude: 16.0651,
-    longtitude: 108.5712
+    latitude: 16.0204,
+    longtitude: 108.2080
   ),
   Motel(
     id: "motel6",
@@ -193,8 +193,8 @@ final List<Motel> hotels = [
     waterPrice: 45000,
     deposit: 'Đặt cọc trước 1 tháng',
     formality: 'Căn hộ',
-    latitude: 16.0253,
-    longtitude: 108.2212
+    latitude: 16.0171,
+    longtitude: 108.2285
   ),
   Motel(
     id: "motel7",
@@ -221,8 +221,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 1 tháng',
     formality: 'Căn hộ',
-    latitude: 16.0299,
-    longtitude: 108.8812
+    latitude: 16.0265,
+    longtitude: 108.2404
   ),
   Motel(
     id: "motel8",
@@ -249,8 +249,8 @@ final List<Motel> hotels = [
     waterPrice: 70000,
     deposit: 'Đặt cọc trước 8 tháng',
     formality: 'Căn hộ',
-    latitude: 16.07853,
-    longtitude: 108.242212
+    latitude: 16.0442,
+    longtitude: 108.2383
   ),
   Motel(
     id: "motel9",
@@ -277,8 +277,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 12 tháng',
     formality: 'Căn hộ',
-    latitude: 16.025153,
-    longtitude: 108.225212
+    latitude: 16.0395,
+    longtitude: 108.2083
   ),
   Motel(
     id: "motel10",
@@ -305,8 +305,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 12 tháng',
     formality: 'Ký túc xá',
-    latitude: 16.028753,
-    longtitude: 108.223212
+    latitude: 16.0353,
+    longtitude: 108.2162
   ),
   Motel(
     id: "motel11",
@@ -333,8 +333,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 12 tháng',
     formality: 'Ký túc xá',
-    latitude: 16.042153,
-    longtitude: 108.522212
+    latitude: 16.0381,
+    longtitude: 108.1880
   ),
   Motel(
     id: "motel12",
@@ -361,8 +361,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 12 tháng',
     formality: 'Không chung chủ',
-    latitude: 16.022253,
-    longtitude: 108.1122212
+    latitude: 16.0516,
+    longtitude: 108.2092
   ),
   Motel(
     id: "motel13",
@@ -389,8 +389,8 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 12 tháng',
     formality: 'Ký túc xá',
-    latitude: 16.08253,
-    longtitude: 108.21242
+    latitude: 16.0338,
+    longtitude: 108.2124
   ),
   Motel(
     id: "motel14",
@@ -417,7 +417,7 @@ final List<Motel> hotels = [
     waterPrice: 4000,
     deposit: 'Đặt cọc trước 12 tháng',
     formality: 'Không chung chủ',
-    latitude: 16.025423,
-    longtitude: 108.251212
+    latitude: 16.0661,
+    longtitude: 108.1939
   ),
 ];
