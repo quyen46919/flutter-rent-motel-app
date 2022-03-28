@@ -88,7 +88,7 @@ class _FavoritePageState extends State<FavoritePage> {
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
-                                          image: AssetImage(motel.imageUrl)
+                                          image: AssetImage(motel.imageUrl[0])
                                       ),
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(20.0)

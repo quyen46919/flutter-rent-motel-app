@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_hotel_app/screens/favorite_screen.dart';
 import 'package:travel_hotel_app/screens/home_detail_screen.dart';
+import 'package:travel_hotel_app/screens/map_screen.dart';
 import 'package:travel_hotel_app/screens/profile_screen.dart';
 import 'package:travel_hotel_app/screens/support_center_screen.dart';
 
@@ -15,18 +17,18 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
   int _currentTab = 0;
 
   final List<IconData> bottomIcons = [
-    Icons.search, Icons.favorite, Icons.support, Icons.person
+    FontAwesomeIcons.home, Icons.favorite, Icons.support, Icons.person
   ];
 
   final List<String> bottomLabel = [
-    'Search', 'Favorite', 'Support', 'Profile'
+    'Trang chủ', 'Theo dõi', 'Hỏi đáp', 'Cá nhân'
   ];
 
   final List<Widget> screens = [
     const HomeScreen(),
     const FavoritePage(),
-    SupportCenterScreen(),
-    ProfileScreen(),
+    const SupportCenterScreen(),
+    const ProfileScreen()
   ];
 
   Widget currentScreen = const HomeScreen();
@@ -38,11 +40,14 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
           child: currentScreen,
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.home),
+        child: Icon(
+            FontAwesomeIcons.map,
+          color: Colors.blue.shade900,
+        ),
         onPressed: () {
           setState(() {
-            currentScreen = const HomeScreen();
-            _currentTab = 0;
+            currentScreen = const GoogleMapScreen();
+            _currentTab = 4;
           });
         },
       ),
@@ -73,14 +78,14 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Icon(
                               Icons.search,
-                              color: _currentTab == 0 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                              color: _currentTab == 0 ? Colors.blue.shade900 : Colors.grey,
                             ),
                           ),
                           Text(
                             'Tìm kiếm',
                             style: TextStyle(
                               fontSize: 14.0,
-                              color: _currentTab == 0 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                              color: _currentTab == 0 ? Colors.blue.shade900 : Colors.grey,
                             ),
                           )
                         ],
@@ -100,14 +105,14 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: Icon(
                               Icons.favorite,
-                              color: _currentTab == 1 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                              color: _currentTab == 1 ? Colors.blue.shade900 : Colors.grey,
                             ),
                           ),
                           Text(
                             'Đã thích',
                             style: TextStyle(
                               fontSize: 14.0,
-                              color: _currentTab == 1 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                              color: _currentTab == 1 ? Colors.blue.shade900 : Colors.grey,
                             ),
                           )
                         ],
@@ -130,14 +135,14 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Icon(
                         Icons.help,
-                        color: _currentTab == 2 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                        color: _currentTab == 2 ? Colors.blue.shade900 : Colors.grey,
                       ),
                     ),
                     Text(
                       'Hỗ trợ',
                       style: TextStyle(
                         fontSize: 14.0,
-                        color: _currentTab == 2 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                        color: _currentTab == 2 ? Colors.blue.shade900 : Colors.grey,
                       ),
                     )
                   ],
@@ -147,7 +152,7 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                 minWidth:60.0,
                 onPressed: (){
                   setState(() {
-                    currentScreen = ProfileScreen();
+                    currentScreen = const ProfileScreen();
                     _currentTab = 3;
                   });
                 },
@@ -157,14 +162,14 @@ class _HomeScreenTabsState extends State<HomeScreenTabs> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Icon(
                         Icons.person,
-                        color: _currentTab == 3 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                        color: _currentTab == 3 ? Colors.blue.shade900 : Colors.grey,
                       ),
                     ),
                     Text(
                       'Cá nhân',
                       style: TextStyle(
                         fontSize: 14.0,
-                        color: _currentTab == 3 ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                        color: _currentTab == 3 ? Colors.blue.shade900 : Colors.grey,
                       ),
                     )
                   ],

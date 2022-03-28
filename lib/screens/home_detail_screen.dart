@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 5;
+  int _selectedIndex = 0;
 
   final List<String> _places = ['Không chung chủ', 'Chung chủ', 'Căn hộ', 'Ký túc xá'];
   final List<IconData> _icons = [
@@ -50,13 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 60.0,
                   width: 60.0,
                   decoration: BoxDecoration(
-                    color: _colors[index],
+                    color: const Color(0xfff2f7ff),
                     borderRadius: BorderRadius.circular(5.0),
                     boxShadow: Provider.of<MotelProvider>(context).currentFormality == _places[index] ?
                     [
                       BoxShadow(
-                        color: _colors[index].withOpacity(0.3),
-                        spreadRadius: 5,
+                        color: Colors.blue.shade500.withOpacity(0.2),
+                        spreadRadius: 2,
                         blurRadius: 12,
                         offset: const Offset(0, 3), // changes position of shadow
                       ),
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Icon(
                     _icons[index],
                     size: 25.0,
-                    color: Colors.white,
+                    color: Colors.blue.shade900,
                   ),
                 ),
                 Container(
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     _places[index],
                     style: TextStyle(
-                      color: _colors[index],
+                      color: Colors.blue.shade900,
                       fontWeight: FontWeight.bold,
                       fontSize: 17.0,
                     ),
@@ -96,8 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Xin chào, ${Provider.of<UserProvider>(context).getCurrentUser().fullName}!',
@@ -105,54 +106,53 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontSize: 16.0
                   ),
                 ),
-                Container(
-                  height: 40.0,
-                  width: 40.0,
-                  child: const Icon(
-                    FontAwesomeIcons.moon,
-                    size: 20.0,
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                          spreadRadius: 12,
-                          blurRadius: 12,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ]
-                  ),
-                )
+                // Container(
+                //   height: 40.0,
+                //   width: 40.0,
+                //   child: const Icon(
+                //     FontAwesomeIcons.moon,
+                //     size: 20.0,
+                //   ),
+                //   decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(30.0),
+                //       color: Colors.white,
+                //       boxShadow: [
+                //         BoxShadow(
+                //           color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                //           spreadRadius: 12,
+                //           blurRadius: 12,
+                //           offset: const Offset(0, 3), // changes position of shadow
+                //         ),
+                //       ]
+                //   ),
+                // )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 140.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Let\'s start',
+              children: const [
+                Text(
+                  'Hơn 100 phòng trọ đang chờ bạn đến xem',
                   style: TextStyle(
-                    fontSize: 34.0,
+                    fontSize: 24.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  'your journey!',
-                  style: TextStyle(
-                    fontSize: 34.0,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                )
+                // Text(
+                //   'ChiaSeTro.com!',
+                //   style: TextStyle(
+                //     fontSize: 24.0,
+                //     fontWeight: FontWeight.bold
+                //   ),
+                // )
               ],
             ),
           ),
-          const SizedBox(height: 30.0),
+          const SizedBox(height: 20.0),
           Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: Row(
@@ -163,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       width: double.infinity,
                       child: Material(
-                        borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                         child: TextField(
                           onChanged: (text) {
                             Provider.of<MotelProvider>(context, listen: false).searchMotel(text);
@@ -173,11 +173,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             prefixIcon: Icon(Icons.search),
                             hintText: 'Nhập địa chỉ...',
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
                               borderSide: BorderSide(color: Colors.white),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
                               borderSide: BorderSide(color: Colors.white),
                             ),
                           ),
@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.purple.withOpacity(0.1),
+                            color: Colors.blue.shade700.withOpacity(0.1),
                             spreadRadius: 5,
                             blurRadius: 7,
                             offset: const Offset(0, 1), // changes position of shadow

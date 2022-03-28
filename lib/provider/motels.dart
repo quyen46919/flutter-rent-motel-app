@@ -30,7 +30,7 @@ class MotelProvider with  ChangeNotifier, DiagnosticableTreeMixin {
       initialise();
     } else {
       motelList = hotels;
-      final foundMotel = motelList.where((motel) => motel.category.compareTo(categoryName) == 0
+      final foundMotel = motelList.where((motel) => motel.address.contains(categoryName) == true
           && motel.formality.contains(currentFormality)
       ).toList();
       motelList = foundMotel;
