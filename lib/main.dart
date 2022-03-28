@@ -46,6 +46,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch().copyWith(
             secondary: const Color(0xffD774E8),
           ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.white,
+          ),
           scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         ),
         home: const LoginScreen(),

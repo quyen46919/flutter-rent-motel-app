@@ -11,7 +11,7 @@ class CategoryList extends StatefulWidget {
 
 class _CategoryListState extends State<CategoryList> {
   final categoryList = [
-    'Tất cả', 'Đề cử cho bạn', 'Tìm kiếm nhiều nhất', 'Chất lượng cao'
+    'Tất cả', 'Hải Châu', 'Cẩm Lệ', 'Ngũ Hành Sơn', 'Liên Chiểu', 'Sơn Trà', 'Hòa Vang', 'Thanh Khuê'
   ];
   int currentSelect = 0;
 
@@ -32,9 +32,9 @@ class _CategoryListState extends State<CategoryList> {
             child: Text(
                 categoryList[index],
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 19.0,
                   fontWeight: currentSelect == index ? FontWeight.bold : FontWeight.normal,
-                  color: currentSelect == index ? Theme.of(context).colorScheme.secondary : Colors.grey,
+                  color: currentSelect == index ? Colors.blue.shade900 : Colors.grey,
                 )
             ),
           ),
