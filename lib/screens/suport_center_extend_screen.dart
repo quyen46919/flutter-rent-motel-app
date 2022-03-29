@@ -121,7 +121,7 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
                           borderSide: BorderSide(color: Colors.white),
-                          ),
+                        ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
                           borderSide: BorderSide(color: Colors.white),
@@ -129,9 +129,9 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
                       ),
                     ),
                   ),
-                    height: 60,
-                    width: 300,
-                    // color: Colors.red,
+                  height: 60,
+                  width: 300,
+                  // color: Colors.red,
                 ),
 
               ),
@@ -274,7 +274,7 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
 
                               textAlign: TextAlign.justify,
                               style: TextStyle( fontSize: 19, fontWeight: FontWeight.w500, color: Colors.grey),
-                                ),
+                            ),
                           )
                           ,
                         ),

@@ -28,22 +28,22 @@ class _FavoritePageState extends State<FavoritePage> {
           child: Column(
             children: listMotels.isEmpty
                 ? [
-                    Container(
-                      color: const Color(0xffF6F3FA),
-                      height: 500.0,
-                      width: double.infinity,
-                      child: const Center(
-                        child: Text(
-                          'Không có phòng trọ bạn đã theo dõi',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.grey
-                          ),
-                        ),
-                      ),
-                    )
-                  ]
+              Container(
+                color: const Color(0xffF6F3FA),
+                height: 500.0,
+                width: double.infinity,
+                child: const Center(
+                  child: Text(
+                    'Không có phòng trọ bạn đã theo dõi',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromRGBO(64, 58, 165, 1),
+                    ),
+                  ),
+                ),
+              )
+            ]
                 : listMotels.map((motel) =>
                 Container(
                   decoration: const BoxDecoration(
@@ -148,7 +148,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     ),
                   ),
                 )
-             ).toList(),
+            ).toList(),
           ),
         ),
       ],

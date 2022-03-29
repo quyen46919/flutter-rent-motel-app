@@ -3,9 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_hotel_app/provider/google_sign_in.provider.dart';
 import 'package:travel_hotel_app/provider/user.dart';
-import 'package:travel_hotel_app/screens/login_screen.dart';
 import 'package:travel_hotel_app/widgets/header_background.dart';
 
 const PRIMARY = 'primary';
@@ -53,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(color: Colors.purple[400]),
+                          // Container(color: Colors.purple[400]),
                           const SizedBox(
                             child:
                             Padding(
@@ -111,14 +109,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
 
                                 ),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(3),
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
+                                      color: Color.fromRGBO(212, 212, 212, 1),
                                       spreadRadius: 5,
                                       blurRadius: 7,
-                                      offset: const Offset(0, 3), // changes position of shadow
+                                      offset: Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                 ),
@@ -157,11 +155,11 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                     )
                                 ),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(3),
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
+                                      color: Color.fromRGBO(212, 212, 212, 1),
                                       spreadRadius: 5,
                                       blurRadius: 7,
                                       offset: Offset(0, 3), // changes position of shadow
@@ -213,14 +211,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
 
                                     ),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderRadius: BorderRadius.circular(3),
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
+                                          color: Color.fromRGBO(212, 212, 212, 1),
                                           spreadRadius: 5,
                                           blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
+                                          offset: Offset(0, 3), // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -260,14 +258,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
 
                                     ),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderRadius: BorderRadius.circular(3),
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
+                                          color: Color.fromRGBO(212, 212, 212, 1),
                                           spreadRadius: 5,
                                           blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
+                                          offset: Offset(0, 3), // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -314,14 +312,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
 
                                 ),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(3),
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
+                                      color: Color.fromRGBO(212, 212, 212, 1),
                                       spreadRadius: 5,
                                       blurRadius: 7,
-                                      offset: const Offset(0, 3), // changes position of shadow
+                                      offset: Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                 ),
@@ -360,14 +358,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                     )
                                 ),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(3),
                                   color: Colors.white,
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
+                                      color: Color.fromRGBO(212, 212, 212, 1),
                                       spreadRadius: 5,
                                       blurRadius: 7,
-                                      offset: const Offset(0, 3), // changes position of shadow
+                                      offset: Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                 ),
@@ -426,14 +424,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                         )
                                     ),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderRadius: BorderRadius.circular(3),
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
+                                          color: Color.fromRGBO(212, 212, 212, 1),
                                           spreadRadius: 5,
                                           blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
+                                          offset: Offset(0, 3), // changes position of shadow
                                         ),
                                       ],
                                     ),
@@ -477,14 +475,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
 
                                       ),
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(3),
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
-                                            color: Colors.purple.withOpacity(0.1),
+                                            color:Color.fromRGBO(212, 212, 212, 1),
                                             spreadRadius: 5,
                                             blurRadius: 7,
-                                            offset: const Offset(0, 3), // changes position of shadow
+                                            offset: Offset(0, 3), // changes position of shadow
                                           ),
                                         ],
                                       ),
@@ -521,14 +519,14 @@ class _ProfileScreenState extends State<ProfileScreen>{
                                           )
                                       ),
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(3),
                                         color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.purple.withOpacity(0.1),
+                                        boxShadow: const [
+                                          BoxShadow  (
+                                            color: Color.fromRGBO(212, 212, 212, 1),
                                             spreadRadius: 5,
                                             blurRadius: 7,
-                                            offset: const Offset(0, 3), // changes position of shadow
+                                            offset: Offset(0, 3), // changes position of shadow
                                           ),
                                         ],
                                       ),
@@ -544,27 +542,21 @@ class _ProfileScreenState extends State<ProfileScreen>{
                           Container(
                             width: double.infinity,
                             padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 40.0),
-                            height: 105.0,
+                            height: 110.0,
                             child: ElevatedButton(
                                 child: const Text(
                                   "Đăng xuất",
                                   style: TextStyle(color: Colors.white, fontSize: 20),
                                 ),
                                 onPressed: () {
-                                  Provider.of<UserProvider>(context, listen: false).logout();
-                                  Provider.of<UserProvider>(context, listen: false).facebookLogout();
-                                  Provider.of<GoogleSignInProvider>(context, listen: false).logout();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const LoginScreen()),
-                                  );
+                                  Navigator.pushNamedAndRemoveUntil(context, '/', ModalRoute.withName('/login'));
                                 },
                                 style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                  backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
+                                  backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(64, 58, 165, 1)),
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8.0),
+                                        borderRadius: BorderRadius.circular(3.0),
                                       )
                                   ),
                                 )
