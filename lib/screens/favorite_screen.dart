@@ -131,7 +131,7 @@ class _FavoritePageState extends State<FavoritePage> {
                                           Text(
                                             "${oCcy.format(motel.price)} vnđ" ,
                                             style: const TextStyle(
-                                                color: Colors.purpleAccent,
+                                                color: Colors.green,
                                                 fontSize: 18.0
                                             ),
                                           ), // Padding(

@@ -161,7 +161,7 @@ class _SupportCenterExtendPageState extends State<SupportCenterExtendPage> {
               borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(80.0),
               ),
-              color: myColors[COLOR_USER]
+              color: Colors.blue.shade900,
           ),
           height: 150,
           child: Row(
