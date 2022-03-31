@@ -13,8 +13,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-      SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: const [
             HeaderBackground(header: "Hồ sơ người dùng"),
@@ -53,8 +52,6 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-
-
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
     Key? key,
@@ -90,11 +87,8 @@ class ProfilePic extends StatelessWidget {
                     backgroundColor: Color(0xFFF5F6F9),
                   ),
                   onPressed: () {},
-                  child: const Icon(
-                    Icons.camera_alt,
-                    color: Colors.black,
-                    size: 24.0
-                  ),
+                  child: const Icon(Icons.camera_alt,
+                      color: Colors.black, size: 24.0),
                 ),
               ),
             )
@@ -104,7 +98,6 @@ class ProfilePic extends StatelessWidget {
     );
   }
 }
-
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
@@ -137,8 +130,6 @@ class ProfileMenu extends StatelessWidget {
             ],
           ),
           child: Container(
-
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -150,23 +141,35 @@ class ProfileMenu extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(bottom: 5.0),
-                        child: Text(hintText, style: TextStyle( fontSize: 13, color: Colors.black45),),
+                        child: Text(
+                          hintText,
+                          style: TextStyle(fontSize: 13, color: Colors.black45),
+                        ),
                       ),
-                      Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black87,),)
-
+                      Text(
+                        text,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.black87,
+                        ),
+                      )
                     ],
                   ),
                 ),
                 Container(
                   // width: double.infinity,
-                  child: Image.asset(icon, width: 22,color: Colors.black45,),
+                  child: Image.asset(
+                    icon,
+                    width: 22,
+                    color: Colors.black45,
+                  ),
                   padding: EdgeInsets.only(right: 15.0),
                 ),
               ],
             ),
           ),
         ),
-
         padding: const EdgeInsets.all(10.0),
       ),
     );
@@ -183,52 +186,29 @@ class Button extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 40.0),
       height: 105.0,
       child: ElevatedButton(
-      child: const Text(
-      "Đăng xuất",
-      style: TextStyle(color: Colors.white, fontSize: 20),
-    ),
-    onPressed: () {
-    Provider.of<UserProvider>(context, listen: false).logout();
-    Provider.of<UserProvider>(context, listen: false).facebookLogout();
-    Provider.of<GoogleSignInProvider>(context, listen: false).logout();
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const LoginScreen()),
-    );
-    },
-    style: ButtonStyle(
-    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade900),
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-    RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(8.0),
-    )
-    ),
-    ),
-    ),
+        child: const Text(
+          "Đăng xuất",
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        onPressed: () {
+          Provider.of<UserProvider>(context, listen: false).logout();
+          Provider.of<UserProvider>(context, listen: false).facebookLogout();
+          Provider.of<GoogleSignInProvider>(context, listen: false).logout();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+          );
+        },
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          backgroundColor:
+              MaterialStateProperty.all<Color>(Colors.blue.shade900),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          )),
+        ),
+      ),
     );
   }
 }
-
-// child: TextButton(
-// style: TextButton.styleFrom(
-// // primary: kPrimaryColor,
-// padding: EdgeInsets.all(20),
-// shape:
-// RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-// backgroundColor: Color(0xFFF5F6F9),
-// ),
-// onPressed: press,
-// child: Row(
-// children: [
-// //   SvgPicture.asset(
-// //     icon,
-// //     // color: kPrimaryColor,
-// //     width: 22,
-// //   ),
-// SizedBox(width: 20),
-// Expanded(child: Text(text)),
-// Icon(Icons.arrow_forward_ios),
-// ],
-// ),
-// ),
