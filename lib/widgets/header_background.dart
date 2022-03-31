@@ -24,7 +24,7 @@ class HeaderBackground extends StatelessWidget {
                       header,
                       style: const TextStyle(
                           fontSize: 24,
-                          color: Colors.black,
+                          color: Color.fromRGBO(13, 71, 161, 1),
                         fontWeight: FontWeight.bold
                       ),
                     ),

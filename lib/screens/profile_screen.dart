@@ -125,7 +125,7 @@ class ProfileMenu extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 2,
                 blurRadius: 3,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),
@@ -143,12 +143,12 @@ class ProfileMenu extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 5.0),
                         child: Text(
                           hintText,
-                          style: TextStyle(fontSize: 13, color: Colors.black45),
+                          style: const TextStyle(fontSize: 13, color: Colors.black45),
                         ),
                       ),
                       Text(
                         text,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                           color: Colors.black87,

@@ -17,13 +17,13 @@ const COLOR_IMAGE = 'color_image';
 const COLOR_USER = 'color_user';
 const COLOR_TEXT = 'color_text';
 const Map<String,Color> myColors ={
-  PRIMARY: Color.fromRGBO(129, 104, 221, 1),
-  SECONDARY: Color.fromRGBO(215, 116, 232,1),
+  PRIMARY: Color.fromRGBO(104, 106, 221, 1),
+  SECONDARY: Color.fromRGBO(116, 126, 232,1),
   BASIC_LIGHT: Color.fromRGBO(205, 202, 216, 1),
   BASIC_DARK: Color.fromRGBO(52, 40, 97, 1),
-  BACKGROUND: Color.fromRGBO(235, 205, 247, 1),
+  BACKGROUND: Color.fromRGBO(205, 208, 247, 1),
   COLOR_IMAGE: Color.fromRGBO(73, 63, 113, 1),
-  COLOR_USER: Color.fromRGBO(217, 89, 219, 1),
+  COLOR_USER: Color.fromRGBO(89, 100, 219, 1),
   COLOR_TEXT: Color.fromRGBO(157, 138, 228, 1),
 };
 
@@ -54,7 +54,7 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF6F3FA),
+      backgroundColor: const Color(0xfff3f5fa),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -83,89 +83,5 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
       ),
     );
   }
-  // Widget BuildUserSupport() => Row(
-  //   children: [
-  //     Expanded(
-  //       child: Container(
-  //         decoration: BoxDecoration(
-  //             borderRadius: const BorderRadius.only(
-  //               bottomRight: Radius.circular(80.0),
-  //             ),
-  //             color: myColors[COLOR_USER]
-  //         ),
-  //         height: 150,
-  //         width: double.infinity,
-  //         child: Row(
-  //           crossAxisAlignment: CrossAxisAlignment.end,
-  //           mainAxisAlignment: MainAxisAlignment.start,
-  //           children: [
-  //             Container(
-  //               width: 215,
-  //               child: Image.asset(
-  //                   'assets/images/support_user.png',
-  //                   height: 100,
-  //               ),
-  //             ),
-  //             Container(
-  //               width: 190,
-  //               height: 200,
-  //
-  //               // color: Colors.red,
-  //               child: Padding(
-  //                 padding: const EdgeInsets.only(bottom: 10.0),
-  //                 child: Column(
-  //                   mainAxisAlignment: MainAxisAlignment.end,
-  //                   crossAxisAlignment: CrossAxisAlignment.start,
-  //                   children: [
-  //                     const Text(
-  //                         'Live Chat',
-  //                         style:TextStyle(
-  //                             fontSize: 35,
-  //                             color: Colors.white,
-  //                             fontWeight: FontWeight.w600
-  //                         )
-  //                     ),
-  //                     const Text(
-  //                         'with our Support',
-  //                         style:TextStyle(
-  //                             fontSize: 20,
-  //                             color: Colors.white,
-  //                             fontWeight: FontWeight.w300
-  //                         )
-  //                     ),
-  //                     SizedBox(
-  //                       child: Padding(
-  //                         padding: const EdgeInsets.only(top: 20),
-  //                         child: Container(
-  //                           height: 25,
-  //                           width: 80,
-  //                           // color: Colors.red,
-  //                           decoration: BoxDecoration(
-  //                               borderRadius: BorderRadius.circular(15.0),
-  //                               color: Colors.white
-  //                           ),
-  //                           child:
-  //                           const Center(child: Text(
-  //                               'Start',
-  //                               style:TextStyle(
-  //                                   fontSize: 16,
-  //                                   color: Colors.grey,
-  //                                   fontWeight: FontWeight.w600
-  //                               )
-  //                             )
-  //                           ),
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   ],
-  // );
 }
 
