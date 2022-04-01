@@ -59,23 +59,21 @@ class _SupportCenterScreenState extends State<SupportCenterScreen> {
         child: Column(
           children: [
             const HeaderBackground(header: "Hỗ trợ"),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.0)
-                ),
-                child: Column(
-                  children: _questions.asMap().entries.map((e) {
-                    return Collapse(
-                      header: _questions[e.key],
-                      collapse: _answers[e.key],
-                      expanded: _answers[e.key],
-                    );
-                  }).toList(),
-                ),
+            const SizedBox(height: 20.0),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.0)
+              ),
+              child: Column(
+                children: _questions.asMap().entries.map((e) {
+                  return Collapse(
+                    header: _questions[e.key],
+                    collapse: _answers[e.key],
+                    expanded: _answers[e.key],
+                  );
+                }).toList(),
               ),
             )
           ],

@@ -29,7 +29,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const SizedBox(height: 50.0),
+                  const SizedBox(height: 40.0),
                   Stack(
                       alignment: AlignmentDirectional.topStart,
                       children: <Widget>[

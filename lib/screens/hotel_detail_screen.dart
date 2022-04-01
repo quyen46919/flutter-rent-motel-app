@@ -310,7 +310,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                             ),
                             label: Text(
                                 motelState.favoriteMotelList.where((motel) => motel.id == widget.motel.id).isEmpty
-                                    ? "Đang theo dõi" : "Bỏ theo dõi"
+                                    ? "Theo dõi" : "Bỏ theo dõi"
                             ),
                             onPressed: () {
                               Provider.of<MotelProvider>(context, listen: false).toggleFavoriteMotel(widget.motel);

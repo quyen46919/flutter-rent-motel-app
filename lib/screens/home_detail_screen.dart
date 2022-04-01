@@ -142,13 +142,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // Text(
-                //   'ChiaSeTro.com!',
-                //   style: TextStyle(
-                //     fontSize: 24.0,
-                //     fontWeight: FontWeight.bold
-                //   ),
-                // )
               ],
             ),
           ),
@@ -200,19 +193,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                // Container(
-                //   height: 50.0,
-                //   width: 50.0,
-                //   child: const Icon(
-                //     FontAwesomeIcons.stream,
-                //     size: 20.0,
-                //     color: Colors.white,
-                //   ),
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(10.0),
-                //     color: const Color(0xff342861),
-                //   ),
-                // )
               ],
             ),
           ),
