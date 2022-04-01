@@ -26,14 +26,14 @@ class ShowDiaLog extends StatelessWidget {
 
   _buildChild(BuildContext context) => Container(
     height: 450,
-    decoration: const BoxDecoration(
-        color: Color(0xffdd74e8),
+    width: MediaQuery.of(context).size.width* 0.8,
+    decoration:  BoxDecoration(
+        color: Colors.blue.shade900,
         shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(12))
+        borderRadius: const BorderRadius.all(Radius.circular(12))
     ),
     child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,        crossAxisAlignment: CrossAxisAlignment.center,
       children:  <Widget>[
         Icon(
           icon,
@@ -46,19 +46,19 @@ class ShowDiaLog extends StatelessWidget {
             message,
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.white
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.white
             ),
           ),
         ),
         SizedBox(
-          width: 250,
+          width: MediaQuery.of(context).size.width* 0.6,
           height: 70,
           child: ElevatedButton(
-              child: const Text(
+              child:  Text(
                 "Tôi đã hiểu",
-                style: TextStyle(color: Color(0xffdd74e8), fontSize: 25,),
+                style: TextStyle(color: Colors.blue.shade900, fontSize: 25, fontWeight: FontWeight.bold),
               ),
               onPressed:() {
                 navigateType == 'pushNamedAndRemoveUntil'
@@ -70,7 +70,7 @@ class ShowDiaLog extends StatelessWidget {
                 foregroundColor: MaterialStateProperty.all<Color>(
                     Colors.black),
                 backgroundColor: MaterialStateProperty.all<Color>(
-                     Colors.white),
+                    Colors.white),
                 shape: MaterialStateProperty.all<
                     RoundedRectangleBorder>(
                     RoundedRectangleBorder(

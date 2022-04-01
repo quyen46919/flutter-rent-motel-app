@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_hotel_app/widgets/show_dialog.dart';
-import 'package:travel_hotel_app/widgets/background.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -12,61 +11,17 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
 
-  Color _color = const Color.fromRGBO(255, 0, 0, 0);
   final TextEditingController _emailControl = TextEditingController();
-  var _emailcheckcolor = true;
-  var _emailInvalid = true;
-  final Color _trueinputvalidcolor = const Color.fromRGBO(236, 215, 250, 1);
-  final Color _falseinputvalidcolor = Colors.red.withOpacity(0.8);
-  IconData _icon = FontAwesomeIcons.checkCircle;
-
-  void checkEmail(value) {
-    setState(() {
-      if (value == null) {
-        _color = Colors.red;
-      }
-      if (!RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.com+")
-          .hasMatch(value)) {
-        _icon = FontAwesomeIcons.timesCircle;
-        _color = Colors.red;
-        _emailcheckcolor = false;
-      }
-      else {
-        _icon = FontAwesomeIcons.checkCircle;
-        _color = Colors.green;
-        _emailcheckcolor = true;
-        _emailInvalid = true;
-      }
-    });
-  }
-
-  void btnClick() {
-    setState(() {
-      if (_emailControl.text.length < 8) {
-        _emailInvalid = false;
-      }
-      else if (!_emailcheckcolor) {
-        _emailInvalid = false;
-      }
-      else {
-        showDialog(context: context, builder: (context) =>
-          const ShowDiaLog(message: "Vui lòng kiểm tra email để đổi mật khẩu")
-        );
-      }
-    }
-    );
-  }
 
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Background(
+      body:  SafeArea(
+        child: Form(
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -74,22 +29,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: size.height * 0.06),
+                  const SizedBox(height: 50.0),
                   Stack(
                       alignment: AlignmentDirectional.topStart,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 2, 20, 0),
-                          child: Container(
-                            width: 1000,
-                            child: const Padding(
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(20, 8, 20, 0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Padding(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                               child: Text(
                                 "Quên mật khẩu",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 25,
-                                  color: Color.fromRGBO(128, 103, 221, 1),
+                                  color: Color.fromRGBO(0, 0, 0, 1),
                                   fontFamily: "Abril Fatface",
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -98,133 +53,105 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                          child: Container(
-                            margin: const EdgeInsets.only(bottom: 10),
-                            height: 28,
-                            width: 28,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(color: _trueinputvalidcolor,
-                                    spreadRadius: 1,
-                                    blurRadius: 10,
-                                    offset: const Offset(0, 2),)
-                                ]
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(1, 0, 0, 10),
-                              child: IconButton(
-                                padding: const EdgeInsets.only(bottom: 0),
-                                icon: const Icon(FontAwesomeIcons.angleLeft),
-                                iconSize: 25,
-                                color: const Color.fromRGBO(199, 161, 230, 1),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
+                          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
+                            child: IconButton(
+                              hoverColor: Colors.white,
+                              focusColor: const Color.fromRGBO(0, 0, 0, 0),
+                              padding: const EdgeInsets.only(bottom: 0),
+                              icon: const Icon(FontAwesomeIcons.arrowLeft),
+                              iconSize: 25,
+                              color: Colors.blue.shade900,
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
                             ),
                           ),
                         ),
                       ]
                   ),
 
-                  SizedBox(height: size.height * 0.03),
+                  const SizedBox(height: 20.0),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       "Hãy nhập địa chỉ email của bạn tại đây, chúng tôi sẽ cung cấp cho bạn phương thức để đổi mật khẩu mới",
                       style: TextStyle(
-                          fontSize: 15, color: Color.fromRGBO(68, 58, 79, 1)),
+                          fontSize: 18, color: Color.fromRGBO(0, 0, 0, 1)),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.06),
+                  const SizedBox(height: 30.0),
                   Stack(
                       alignment: AlignmentDirectional.centerEnd,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Container(
-                            width: 10000,
-                            height: 55,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(17),
-                                boxShadow: [
-                                  BoxShadow(color: _emailInvalid
-                                      ? _trueinputvalidcolor
-                                      : _falseinputvalidcolor,
-                                    spreadRadius: 1,
-                                    blurRadius: 15,
-                                    offset: const Offset(0, 2),)
-                                ]
+                          padding: const EdgeInsets.only(left:20, right: 20),
+                          child: TextFormField(
+                            validator: (value){
+                              if(value==null|| value.isEmpty) return 'vui lòng nhập email';
+                              if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.com+").hasMatch(value)) return 'định danh email chưa đúng';
+                              return null;},
+                            controller: _emailControl,
+                            obscureText: false,
+                            cursorColor: Colors .grey,
+                            style:  TextStyle(
+                                fontSize: 17,
+                                color: Colors.grey.shade700,
+                                height: 1.5,
+                                fontWeight: FontWeight.bold
                             ),
-                            child: TextFormField(
-                              controller: _emailControl,
-                              onChanged: checkEmail,
-                              obscureText: false,
-                              cursorColor: Colors.grey,
-                              style: const TextStyle(fontSize: 17, color: Colors
-                                  .black, height: 1.5, fontWeight: FontWeight
-                                  .bold),
-                              decoration: const InputDecoration(
-                                isCollapsed: false,
-                                filled: true,
-                                // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                labelText: "Nhập địa chỉ email",
-                                labelStyle: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                                fillColor: Color.fromRGBO(239, 222, 252, 0),
-                                hoverColor: Color.fromRGBO(1, 1, 1, 0),
-                                border:
-                                InputBorder.none,
+
+                            decoration:  InputDecoration(
+                              hoverColor: Colors.transparent,
+                              fillColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              isCollapsed: false,
+                              filled: true,
+                              // contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                              labelText: "Địa chỉ email",
+                              labelStyle: const TextStyle(
+                                color: Colors.grey,
                               ),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.blue.shade900)
+                              ),
+                              enabledBorder: const UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color.fromRGBO(214, 214, 214,1))
+                              // border:
+                              // InputBorder.none,
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20.0, 0, 40.0, 0),
-                          child: GestureDetector(
-                            child: Icon(
-                              _icon,
-                              color: _color,
-                              size: 20,
                             ),
                           ),
                         ),
                       ]
                   ),
-                  SizedBox(height: size.height * 0.03),
+                  const SizedBox(height: 50.0),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Container(
+                    child: SizedBox(
                       height: 60,
-                      width: 10000,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(color: _trueinputvalidcolor,
-                              spreadRadius: 10,
-                              blurRadius: 20,
-                              offset: const Offset(5, 10),)
-                          ]
-                      ),
+                      width: double.infinity,
                       child: ElevatedButton(
                           child: const Text(
                             "Xác thực",
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
-                          onPressed: btnClick,
+                          onPressed: (){
+                            if(_formKey.currentState!.validate()){
+                              showDialog(context: context, builder: (context) =>
+                              const ShowDiaLog(message: "Vui lòng kiểm tra email để đổi mật khẩu"));
+                            }
+                          },
                           style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all<Color>(
                                 Colors.white),
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color.fromRGBO(128, 103, 221, 1)),
+                                Colors.blue.shade900),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(17),
+                                  borderRadius: BorderRadius.circular(3),
                                 )),
                           )
                       ),
@@ -234,10 +161,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ],
 
-          )
-
+          ),
+        ),
       ),
-      backgroundColor: const Color(0xffFDF8FE),
     );
   }
 }
