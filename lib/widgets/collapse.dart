@@ -14,17 +14,17 @@ class Collapse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 12,
-              offset: const Offset(0, 3), // changes position of shadow
+              color: Colors.blue.shade100,
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: Offset(0, 2),
             ),
           ]
         ),
@@ -32,7 +32,7 @@ class Collapse extends StatelessWidget {
           header: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 15.0),
               Container(
                 padding: const EdgeInsets.only(left: 15.0),
                   child: Row(
@@ -42,8 +42,8 @@ class Collapse extends StatelessWidget {
                           header,
                           style: const TextStyle(
                               fontSize: 20.0,
-                              color: Color(0xff342861),
-                              fontWeight: FontWeight.bold
+                              color: Color.fromRGBO(13, 71, 161, 1),
+                              fontWeight: FontWeight.w500
                           ),
                         ),
                       )
@@ -59,7 +59,7 @@ class Collapse extends StatelessWidget {
                 expanded,
                 style: const TextStyle(
                     fontSize: 18.0,
-                    color: Colors.black38,
+                    color: Colors.black45,
                 ),
             ),
           ),

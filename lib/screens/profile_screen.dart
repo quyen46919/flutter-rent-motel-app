@@ -1,584 +1,214 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_hotel_app/provider/google_sign_in.provider.dart';
 import 'package:travel_hotel_app/provider/user.dart';
-import 'package:travel_hotel_app/screens/login_screen.dart';
 import 'package:travel_hotel_app/widgets/header_background.dart';
 
-const PRIMARY = 'primary';
-const SECONDARY = 'secondary';
-const BASIC_LIGHT = 'basic_light';
-const BASIC_DARK = 'basic_dark';
-const BACKGROUND = 'background';
-const COLOR_IMAGE = 'color_image';
+import 'login_screen.dart';
 
-const Map<String,Color> myColors ={
-  PRIMARY: Color.fromRGBO(129, 104, 221, 1),
-  SECONDARY: Color.fromRGBO(215, 116, 232,1),
-  BASIC_LIGHT: Color.fromRGBO(205, 202, 216, 1),
-  BASIC_DARK: Color.fromRGBO(52, 40, 97, 1),
-  BACKGROUND: Color.fromRGBO(246, 243, 250, 1),
-  COLOR_IMAGE: Color.fromRGBO(73, 63, 113, 1),
-};
-
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({
+    Key? key,
+  }) : super(key: key);
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            HeaderBackground(header: "Hồ sơ người dùng"),
+            ProfilePic(),
+            SizedBox(height: 40),
+            ProfileMenu(
+              hintText: 'Họ và tên',
+              text: "Hoàng Hữu Tài",
+              icon: "assets/images/user.png",
+            ),
+            ProfileMenu(
+              hintText: 'Giới tính',
+              text: "Nam",
+              icon: "assets/images/male-and-female-signs.png",
+            ),
+            ProfileMenu(
+              hintText: 'Địa chỉ',
+              text: "Hải Châu, Đà Nẵng",
+              icon: "assets/images/address.png",
+            ),
+            ProfileMenu(
+              hintText: 'Nghề nghiệp',
+              text: "Developer",
+              icon: "assets/images/job.png",
+            ),
+            ProfileMenu(
+              hintText: 'Số điện thoại',
+              text: "0344444215",
+              icon: "assets/images/phone.png",
+            ),
+            Button(),
+          ],
+        ),
+      ),
+    );
+  }
 }
-class _ProfileScreenState extends State<ProfileScreen>{
-  get child => null;
+
+class ProfilePic extends StatelessWidget {
+  const ProfilePic({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
-    return Consumer<UserProvider>(
-        builder: (context, userState, _) {
-          var currentUser = userState.currentUser;
-          var userFullnameLength = currentUser.fullName.toString().split(" ").length - 1;
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: SingleChildScrollView(
-              child: Center(
-                child: Container(
-                  color: myColors[BACKGROUND],
-                  width: 430,
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        height: 115,
+        width: 115,
+        child: Stack(
+          fit: StackFit.expand,
+          clipBehavior: Clip.none,
+          children: [
+            // Text('data'),
+            CircleAvatar(
+              backgroundImage: AssetImage("assets/images/hoanghon.jpg"),
+            ),
+            Positioned(
+              right: -16,
+              bottom: 0,
+              child: SizedBox(
+                height: 46,
+                width: 46,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      side: BorderSide(color: Colors.white),
+                    ),
+                    primary: Colors.white,
+                    backgroundColor: Color(0xFFF5F6F9),
+                  ),
+                  onPressed: () {},
+                  child: const Icon(Icons.camera_alt,
+                      color: Colors.black, size: 24.0),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileMenu extends StatelessWidget {
+  const ProfileMenu({
+    Key? key,
+    required this.text,
+    required this.icon,
+    required this.hintText,
+  }) : super(key: key);
+
+  final String text, icon, hintText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+      child: Padding(
+        child: Container(
+          // color: Colors.indigo,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 3,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Column(
-                    children: <Widget>[
-                      const HeaderBackground(header: "Cá nhân"),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(color: Colors.purple[400]),
-                          const SizedBox(
-                            child:
-                            Padding(
-                              padding: EdgeInsets.only(left: 30.0, bottom: 20.0, top: 20.0),
-                              child: Text(
-                                "Thông tin cá nhân",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20,
-                                    fontFamily: 'RaleWay'),
-                              ),
-                            ),
-                          ),
-                          // Flexible( child: Container(color: Colors.purple[100],),),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Container(
-                                child:
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child:
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            'Họ đệm',
-                                            style: TextStyle(
-                                                color: myColors[BASIC_LIGHT],
-                                                fontSize: 12.0
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            currentUser.fullName
-                                                .toString()
-                                                .split(" ")
-                                                .sublist(0, userFullnameLength)
-                                                .join(" "),
-                                            // textScaleFactor: 1,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 16.0
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 3), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                height: 50,
-                                width: 180,
-                              ),
-                              Container(
-                                child:
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child:
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            'Tên',
-                                            style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            currentUser.fullName.toString().split(" ").removeLast(),
-                                            // textScaleFactor: 1,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 16.0
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: Offset(0, 3), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                height: 50,
-                                width: 180,
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(17.0),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 17.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    child:
-                                    Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child:
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 7.0),
-                                              child: Text(
-                                                'Email',
-                                                style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 7.0),
-                                              child: Text(
-                                                currentUser.email.toString(),
-                                                // textScaleFactor: 1,
-                                                style: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 16.0
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    height: 50,
-                                    // width: ,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 0.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    child:
-                                    Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child:
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 7.0),
-                                              child: Text(
-                                                'Phone',
-                                                style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 7.0),
-                                              child: Text(
-                                                currentUser.phone.toString(),
-                                                // textScaleFactor: 1,
-                                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 16.0),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    height: 50,
-                                    // width: ,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Container(
-                                child:
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child:
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            'Giới tính',
-                                            style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            currentUser.gender.toString(),
-                                            // textScaleFactor: 1,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 16.0
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 3), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                height: 50,
-                                width: 180,
-                              ),
-                              Container(
-                                child:
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child:
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            'Ngày sinh',
-                                            style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 7.0),
-                                          child: Text(
-                                            currentUser.dateOfBirth.toString(),
-                                            // textScaleFactor: 1,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 16.0
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.purple.withOpacity(0.1),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 3), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                height: 50,
-                                width: 180,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            child:
-                            Padding(
-                              padding: EdgeInsets.only(top:30, left: 30),
-                              child: Text(
-                                "Địa chỉ",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20,
-                                    fontFamily: 'RaleWay'
-                                ),
-                              ),
-                            )
-                            ,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(17.0),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 17.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    child:
-                                    Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child:
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 7.0),
-                                              child: Text(
-                                                'Nơi ở hiện tại',
-                                                style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 7.0),
-                                              child: Text(
-                                                currentUser.address.toString(),
-                                                // textScaleFactor: 1,
-                                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 16.0),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.purple.withOpacity(0.1),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: const Offset(0, 3), // changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    height: 50,
-                                    // width: ,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Container(
-                                      child:
-                                      Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child:
-                                          Column(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 7.0),
-                                                child: Text(
-                                                  'Thành phố',
-                                                  style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 7.0),
-                                                child: Text(
-                                                  currentUser.city.toString(),
-                                                  // textScaleFactor: 1,
-                                                  style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 16.0
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.purple.withOpacity(0.1),
-                                            spreadRadius: 5,
-                                            blurRadius: 7,
-                                            offset: const Offset(0, 3), // changes position of shadow
-                                          ),
-                                        ],
-                                      ),
-                                      height: 50,
-                                      width: 180,
-                                    ),
-                                    Container(
-                                      child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 7.0),
-                                                child: Text(
-                                                  'Quốc gia',
-                                                  style: TextStyle(color: myColors[BASIC_LIGHT], fontSize: 12.0),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 7.0),
-                                                child: Text(
-                                                  currentUser.country.toString(),
-                                                  // textScaleFactor: 1,
-                                                  style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 16.0
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.purple.withOpacity(0.1),
-                                            spreadRadius: 5,
-                                            blurRadius: 7,
-                                            offset: const Offset(0, 3), // changes position of shadow
-                                          ),
-                                        ],
-                                      ),
-                                      height: 50,
-                                      width: 180,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 40.0),
-                            height: 105.0,
-                            child: ElevatedButton(
-                                child: const Text(
-                                  "Đăng xuất",
-                                  style: TextStyle(color: Colors.white, fontSize: 20),
-                                ),
-                                onPressed: () {
-                                  Provider.of<UserProvider>(context, listen: false).logout();
-                                  Provider.of<UserProvider>(context, listen: false).facebookLogout();
-                                  Provider.of<GoogleSignInProvider>(context, listen: false).logout();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const LoginScreen()),
-                                  );
-                                },
-                                style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                  backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(128, 103, 221, 1)),
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                      )
-                                  ),
-                                )
-                            ),
-                          )
-                        ],
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5.0),
+                        child: Text(
+                          hintText,
+                          style: const TextStyle(fontSize: 13, color: Colors.black45),
+                        ),
                       ),
+                      Text(
+                        text,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.black87,
+                        ),
+                      )
                     ],
                   ),
                 ),
-              ),
+                Container(
+                  // width: double.infinity,
+                  child: Image.asset(
+                    icon,
+                    width: 22,
+                    color: Colors.black45,
+                  ),
+                  padding: EdgeInsets.only(right: 15.0),
+                ),
+              ],
             ),
+          ),
+        ),
+        padding: const EdgeInsets.all(10.0),
+      ),
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  const Button({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 40.0),
+      height: 105.0,
+      child: ElevatedButton(
+        child: const Text(
+          "Đăng xuất",
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        onPressed: () {
+          Provider.of<UserProvider>(context, listen: false).logout();
+          Provider.of<UserProvider>(context, listen: false).facebookLogout();
+          Provider.of<GoogleSignInProvider>(context, listen: false).logout();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
           );
-        }
+        },
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          backgroundColor:
+              MaterialStateProperty.all<Color>(Colors.blue.shade900),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          )),
+        ),
+      ),
     );
   }
 }

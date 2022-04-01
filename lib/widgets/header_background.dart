@@ -11,25 +11,20 @@ class HeaderBackground extends StatelessWidget {
           Expanded(
             child: Container(
               width: double.infinity,
-              height: 140,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      'assets/images/header-background.png'
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              height: 110,
+              color:  Colors.white,
+
+              padding: const EdgeInsets.only(bottom: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
                     child: Text(
                       header,
                       style: const TextStyle(
-                          fontSize: 28,
-                          color: Colors.white,
+                          fontSize: 24,
+                          color: Color.fromRGBO(13, 71, 161, 1),
                         fontWeight: FontWeight.bold
                       ),
                     ),
